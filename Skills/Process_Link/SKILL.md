@@ -56,6 +56,32 @@ This skill takes a YouTube URL, asks the user which category folder to save it i
 
 8. **Confirm success**: Report file saved location to user (or pass to next skill)
 
+   **If NO skill chaining triggered** (folder has no analysis skill):
+   - Push the transcript file to GitHub
+
+   **If skill chaining IS triggered**:
+   - The next skill will handle the Git push after processing
+   - starter-story skill will push both the processed file and INDEX
+
+### Git Push Workflow (No skill chaining)
+
+```bash
+cd Knowledge_OS
+git add <selected_folder>/Raw_Data/<new_transcript_file.md>
+git commit -m "Add transcript: <video_title>"
+git push origin main
+```
+
+### Git Push Workflow (With skill chaining)
+
+When starter-story skill completes, it will push:
+```bash
+git add Starter_Story/Process_data/<processed_file.md>
+git add Starter_Story/INDEX.md
+git commit -m "Add starter story: <founder_name> - <company>"
+git push origin main
+```
+
 ## Error Handling
 
 - Invalid YouTube URL: Show error and ask for valid URL

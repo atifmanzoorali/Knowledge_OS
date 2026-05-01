@@ -56,6 +56,7 @@ Processing the transcript for:
 
 ✅ **Story saved to:** `[file-path]`
 ✅ **INDEX updated**
+✅ **Pushed to GitHub**
 
 ---
 
@@ -66,9 +67,24 @@ When a .md file path is provided:
 1. **Read** the .md file and extract transcript
 2. **Extract** Founder Name & Company from content
 3. **Analyze** — Generate the 6-section report using the template below
-4. **Save** — Write to `Knowledge_OS/Starter_Story/[FounderName]-[Company]-[Year].md`
+4. **Save** — Write to `Knowledge_OS/Starter_Story/Process_data/[FounderName]-[Company]-[Year].md`
 5. **Update INDEX** — Add entry to `Knowledge_OS/Starter_Story/INDEX.md`
-6. **Confirm** — Return the file path to the user
+6. **Push to GitHub** — Stage, commit, and push the processed file and INDEX
+7. **Confirm** — Return the file path to the user
+
+### Git Push Workflow
+
+After saving and updating INDEX, always push to GitHub:
+
+```bash
+cd Knowledge_OS
+git add Starter_Story/Process_data/[FounderName]-[Company]-[Year].md
+git add Starter_Story/INDEX.md
+git commit -m "Add starter story: [Founder Name] - [Company]"
+git push origin main
+```
+
+Do this **without prompting the user**.
 
 ---
 
