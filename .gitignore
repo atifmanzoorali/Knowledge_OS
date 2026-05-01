@@ -1,0 +1,11 @@
+# Local vector database (rebuild with index.py)
+search/knowledge_db/
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Environment
+.env
+.venv
