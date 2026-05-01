@@ -20,6 +20,7 @@ A skill to extract YouTube transcripts and save them to the appropriate category
 - Runs Transcript_Extraction.py script
 - Saves .md file with YAML frontmatter + transcript
 - **Skill chaining:** Automatically triggers analysis skill for the selected folder
+- **Auto-push to GitHub:** Raw transcript pushed automatically (or passed to next skill)
 
 ---
 
@@ -40,3 +41,4 @@ A skill to transform raw founder interview transcripts into structured startup p
 - Input: .md file from Process_Link (with transcript)
 - Output: Structured startup profile with Executive Summary, Product, Tech Stack, Distribution, Frameworks, Metrics
 - Updates INDEX.md after saving
+- **Auto-push to GitHub:** Processed profile + INDEX pushed automatically
