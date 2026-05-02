@@ -135,3 +135,29 @@ A skill to transform raw AI development videos into structured technical knowled
 - Rebuilds search index
 - **Auto-push to GitHub:** Processed profile + INDEX pushed automatically
 - **Categories:** agentic-ai, vibe-coding, automation, llm-patterns, tool-use
+
+---
+
+## inner-work
+
+A skill to transform raw spiritual, philosophical, and personal growth transcripts into actionable wisdom profiles.
+
+**Trigger phrases:** "analyze inner work content", "process spiritual transcript", "extract wisdom from [topic]", "add [Teacher/Topic] inner work", "process inner work"
+
+**Workflow:** Receives input from Process_Link, analyzes transcript for core wisdom, key principles, practical application, saves to Knowledge_OS/Inner_Work/Process_data/
+
+**Folder structure:**
+- inner-work/
+  - SKILL.md
+
+### Features
+
+- Input: .md file from Process_Link (with transcript)
+- Output: Wisdom profile with Full Context, Core Wisdom, Key Principles, Practical Application, Quotes, Resources
+- Handles diverse topics: Kabbalah, Zen, Stoicism, mindfulness, self-improvement, general spirituality
+- **Balanced approach:** Both philosophical depth + practical application
+- Auto-detects category from content
+- Updates INDEX.md after saving
+- Rebuilds search index
+- **Auto-push to GitHub:** Processed profile + INDEX pushed automatically
+- **Categories:** spirituality, philosophy, psychology, personal-growth, kabbalah, mysticism

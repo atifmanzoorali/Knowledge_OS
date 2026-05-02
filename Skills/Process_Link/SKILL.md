@@ -48,7 +48,7 @@ This skill takes a YouTube URL, asks the user which category folder to save it i
 | Folder | Skill Triggered |
     |--------|----------------|
     | Starter_Story | starter-story |
-    | Inner_Work | (TBD) |
+    | Inner_Work | inner-work |
     | AI_Leaders | ai-leaders |
     | Founders | founders |
     | My_First_Million | my-first-million |

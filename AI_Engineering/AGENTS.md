@@ -55,3 +55,19 @@ python search/index.py
 | Folder | Skill Triggered |
 |--------|----------------|
 | AI_Engineering | ai-engineering |
+
+## Current Contents
+
+### Raw_Data/
+- -QFHIoCo-Ko_Full_Walkthrough_Workflow_for_AI_Coding_—_Matt_Poc.md
+- v4F1gFy-hqg_Why_Software_Fundamentals_Matter_More_Than_Ever.md
+
+### Process_data/
+- AI-Engineering-Workflow-Matt-Pocock-2026.md
+- Software-Fundamentals-Matter-More-Than-Ever-2026.md
+
+### INDEX.md
+| Framework/Concept | Category | Date Added |
+|-------------------|----------|------------|
+| AI Engineering Workflow (Matt Pocock) | agentic-ai | 2026-05-02 |
+| Software Fundamentals Matter More Than Ever | agentic-ai | 2026-05-02 |
