@@ -25,10 +25,12 @@ Knowledge_OS/
 │   │   ├── SKILL.md
 │   │   └── references/
 │   │       └── folder_structure.md
-│   └── starter-story/           # Analyzes founder interviews
-│       └── SKILL.md
+│   ├── starter-story/           # Analyzes Starter Story interviews
+│   │   └── SKILL.md
 │   ├── ai-leaders/              # Analyzes AI leader interviews
-│       └── SKILL.md
+│   │   └── SKILL.md
+│   ├── founders/               # Analyzes Founders Podcast
+│   │   └── SKILL.md
 │   └── my-first-million/        # Analyzes My First Million episodes
 │       └── SKILL.md
 ├── Starter_Story/               # Starter Story content (fully operational)
@@ -90,9 +92,10 @@ When Process_Link saves to a folder with a corresponding analysis skill, it auto
 - All changes automatically pushed to GitHub
 - Process_Link pushes raw transcripts
 - starter-story pushes processed profiles + INDEX
+- founders pushes founder profiles + INDEX
 - ai-leaders pushes AI leader profiles + INDEX
 - my-first-million pushes business insight profiles + INDEX
-- Commit messages follow format: "Add transcript: [title]", "Add starter story: [founder] - [company]", "Add AI Leaders: [Person] - [Topic]", or "Add My First Million: [Guest/Topic]"
+- Commit messages follow format: "Add transcript: [title]", "Add starter story: [founder] - [company]", "Add Founders: [Person] - [Topic]", "Add AI Leaders: [Person] - [Topic]", or "Add My First Million: [Guest/Topic]"
 
 ## Current Contents
 
@@ -128,16 +131,33 @@ When Process_Link saves to a folder with a corresponding analysis skill, it auto
 | Ep. 818 | Follow your bliss - Career Advice | brainstorm | 2026-05-02 |
 | Ep. 820 | Chad - Grüns $1B Exit | interview | 2026-05-02 |
 
+### Founders (Fully Operational)
+
+**Raw_Data/** (2 transcripts):
+- -dh-QNlX12k_Arnold_Education_of_a_Bodybuilder.md
+- mHE37R0aBUA_The_Infinity_Machine.md
+
+**Process_data/** (2 profiles):
+- Arnold_Schwarzenegger-Education_of_a_Bodybuilder-2026.md
+- Demis_Hassabis-The_Infinity_Machine-2026.md
+
+**INDEX.md:**
+| Person | Company/Topic | Type | Primary Book | Date Added |
+|--------|---------------|------|--------------|------------|
+| Arnold Schwarzenegger | The Education of a Bodybuilder | analysis | Arnold: The Education of a Bodybuilder | 2026-05-02 |
+| Demis Hassabis | The Infinity Machine | analysis | The Infinity Machine | 2026-05-02 |
+
 ## Starting a New Session
 
 In a new session, the agent should:
 
 1. **First**, read `Knowledge_OS/AGENTS.md` for system overview
 2. **For Starter_Story queries**, also read `Knowledge_OS/Starter_Story/AGENTS.md` for detailed workflow
-3. **For My_First_Million queries**, also read `Knowledge_OS/My_First_Million/AGENTS.md` for detailed workflow
-4. **For AI_Leaders queries**, also read `Knowledge_OS/AI_Leaders/AGENTS.md` if available
-5. **For skills**, read `Knowledge_OS/Skills/AGENTS.md` for skill documentation
-6. **Check GitHub** for latest updates if needed: `git pull origin main`
+3. **For Founders queries**, also read `Knowledge_OS/Founders/AGENTS.md` for detailed workflow
+4. **For My_First_Million queries**, also read `Knowledge_OS/My_First_Million/AGENTS.md` for detailed workflow
+5. **For AI_Leaders queries**, also read `Knowledge_OS/AI_Leaders/AGENTS.md` if available
+6. **For skills**, read `Knowledge_OS/Skills/AGENTS.md` for skill documentation
+7. **Check GitHub** for latest updates if needed: `git pull origin main`
 
 ## Processing a New Transcript
 
