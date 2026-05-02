@@ -111,3 +111,27 @@ A skill to transform raw David Senra's Founders Podcast transcripts into structu
 - Updates INDEX.md after saving
 - Rebuilds search index
 - **Auto-push to GitHub:** Processed profile + INDEX pushed automatically
+
+---
+
+## ai-engineering
+
+A skill to transform raw AI development videos into structured technical knowledge profiles.
+
+**Trigger phrases:** "analyze AI engineering content", "process AI dev video", "extract frameworks from AI tutorial", "add AI workflow transcript"
+
+**Workflow:** Receives input from Process_Link, analyzes transcript for frameworks, step-by-step implementations, books, tools, concepts, saves to Knowledge_OS/AI_Engineering/Process_data/
+
+**Folder structure:**
+- ai-engineering/
+  - SKILL.md
+
+### Features
+
+- Input: .md file from Process_Link (with transcript)
+- Output: Technical profile with Executive Summary, Core Framework, Step-by-Step Implementation, Tools, Books, Key Insights, Action Items
+- Validates Raw_Data exists before processing (prevents manual bypass)
+- Updates INDEX.md after saving
+- Rebuilds search index
+- **Auto-push to GitHub:** Processed profile + INDEX pushed automatically
+- **Categories:** agentic-ai, vibe-coding, automation, llm-patterns, tool-use
