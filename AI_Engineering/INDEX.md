@@ -2,4 +2,4 @@
 
 | Framework/Concept | Category | Date Added |
 |-------------------|----------|------------|
-| Software Engineering Fundamentals for AI | agentic-ai | 2026-05-02 |
+| AI Engineering Workflow (Matt Pocock) | agentic-ai | 2026-05-02 |
