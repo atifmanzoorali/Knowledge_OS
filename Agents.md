@@ -12,6 +12,12 @@ https://github.com/atifmanzoorali/Knowledge_OS
 Knowledge_OS/
 ├── AGENTS.md                    # This file - system overview
 ├── Transcript_Extraction.py     # Script to extract YouTube transcripts
+├── DB_Plan.md               # Semantic search implementation plan
+├── search/                  # Semantic search capabilities
+│   ├── index.py            # Builds the vector index
+│   ├── search.py           # CLI search interface
+│   ├── knowledge_db/        # Local Chroma database
+│   └── requirements.txt    # Dependencies
 ├── Skills/                      # Skills for the autonomous agent
 │   ├── AGENTS.md                # Skills documentation
 │   ├── README.md
@@ -131,6 +137,51 @@ The skill will:
 ## Scripts
 
 - **Transcript_Extraction.py** - Extracts transcripts using yt-dlp and YouTubeTranscriptApi, saves .md with YAML frontmatter
+
+## Semantic Search
+
+The system includes semantic search capabilities using ChromaDB (local vector database) and sentence-transformers.
+
+### Setup
+
+```bash
+pip install -r search/requirements.txt
+```
+
+### Indexing
+
+Build or update the search index:
+
+```bash
+python search/index.py
+```
+
+This scans all folders (Starter_Story, Inner_Work, AI_Leaders, Founders, My_First_Million, AI_Engineering) and indexes both Raw_Data and Process_data folders.
+
+### Searching
+
+```bash
+python search/search.py "your search query"
+```
+
+Example:
+```bash
+python search/search.py "how did marc lou validate his idea"
+```
+
+### Tech Stack
+
+| Component | Choice |
+|-----------|--------|
+| Vector DB | Chroma (embedded, local-only) |
+| Embeddings | all-MiniLM-L6-v2 |
+| Index Location | search/knowledge_db/ |
+
+### Notes
+
+- Run `index.py` whenever you add new content to search
+- Search is 100% local - no data leaves your machine
+- The knowledge_db folder is in .gitignore (local only - rebuild with `python search/index.py` after cloning)
 
 ## Notes
 
