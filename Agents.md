@@ -44,17 +44,11 @@ Knowledge_OS/
 │   ├── INDEX.md
 │   ├── Raw_Data/                # Raw transcripts
 │   └── Process_data/            # Analyzed AI leader profiles
-├── Founders/                    # (Reserved for future skills)
-│   ├── AGENTS.md
-│   └── Raw_Data/
-├── My_First_Million/            # My First Million content (operational)
+├── Founders/                    # Founders content (operational)
 │   ├── AGENTS.md
 │   ├── INDEX.md
-│   ├── Raw_Data/                # Raw transcripts
-│   └── Process_data/            # Analyzed business profiles
-└── AI_Engineering/              # (Reserved for future skills)
-    ├── AGENTS.md
-    └── Raw_Data/
+│   ├── Raw_Data/
+│   └── Process_data/
 ```
 
 ## How the System Works
@@ -74,11 +68,9 @@ Knowledge_OS/
 |-------|---------|--------|
 | Process_Link | Extract transcripts from YouTube URLs | ✅ Working |
 | starter-story | Analyze Starter Story interviews | ✅ Working |
-| (TBD) | Inner_Work content | 🔜 Planned |
+| founders | Analyze Founders Podcast (interviews & analysis) | ✅ Working |
 | ai-leaders | Analyze AI Leaders interviews | ✅ Working |
-| (TBD) | Founders content | 🔜 Planned |
 | my-first-million | Analyze My First Million episodes | ✅ Working |
-| (TBD) | AI_Engineering content | 🔜 Planned |
 
 ### Skill Chaining
 
@@ -89,7 +81,7 @@ When Process_Link saves to a folder with a corresponding analysis skill, it auto
 | Starter_Story | starter-story |
 | Inner_Work | (TBD) |
 | AI_Leaders | ai-leaders |
-| Founders | (TBD) |
+| Founders | founders |
 | My_First_Million | my-first-million |
 | AI_Engineering | (TBD) |
 

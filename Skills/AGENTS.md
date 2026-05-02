@@ -87,3 +87,27 @@ A skill to transform raw My First Million podcast transcripts into structured bu
 - Updates INDEX.md after saving
 - Rebuilds search index
 - **Auto-push to GitHub:** Processed profile + INDEX pushed automatically
+
+---
+
+## founders
+
+A skill to transform raw David Senra's Founders Podcast transcripts into structured founder profile documents.
+
+**Trigger phrases:** "process founders", "analyze this founder", "add [Person] founder", "Founders podcast"
+
+**Workflow:** Receives input from Process_Link, detects episode type (interview vs analysis), analyzes transcript using appropriate template, saves to Knowledge_OS/Founders/Process_data/
+
+**Folder structure:**
+- founders/
+  - SKILL.md
+
+### Features
+
+- **Two episode types:** Interview (@DavidSenra) and Analysis (@founderspodcast1)
+- Input: .md file from Process_Link (with transcript)
+- Output: Founder profile with Books section (MANDATORY)
+- Template adapts based on episode type
+- Updates INDEX.md after saving
+- Rebuilds search index
+- **Auto-push to GitHub:** Processed profile + INDEX pushed automatically

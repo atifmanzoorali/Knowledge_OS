@@ -50,7 +50,7 @@ This skill takes a YouTube URL, asks the user which category folder to save it i
    | Starter_Story | starter-story |
    | Inner_Work | (TBD) |
    | AI_Leaders | ai-leaders |
-   | Founders | (TBD) |
+   | Founders | founders |
    | My_First_Million | my-first-million |
    | AI_Engineering | (TBD) |
 

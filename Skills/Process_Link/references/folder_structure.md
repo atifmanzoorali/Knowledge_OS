@@ -17,7 +17,9 @@
   - Raw_Data/
 - **Knowledge_OS/Founders/** - Founders content
   - AGENTS.md
+  - INDEX.md
   - Raw_Data/
+  - Process_data/
 - **Knowledge_OS/My_First_Million/** - My First Million content
   - AGENTS.md
   - Raw_Data/
@@ -31,9 +33,9 @@
 |--------|----------------|
 | Starter_Story | starter-story |
 | Inner_Work | (TBD) |
-| AI_Leaders | (TBD) |
-| Founders | (TBD) |
-| My_First_Million | (TBD) |
+| AI_Leaders | ai-leaders |
+| Founders | founders |
+| My_First_Million | my-first-million |
 | AI_Engineering | (TBD) |
 
 ## Scripts
