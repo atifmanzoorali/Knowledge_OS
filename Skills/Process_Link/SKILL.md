@@ -45,14 +45,14 @@ This skill takes a YouTube URL, asks the user which category folder to save it i
    - If yes, automatically trigger that skill with the new .md file path
    - Pass control to the next skill
 
-   | Folder | Skill Triggered |
-   |--------|----------------|
-   | Starter_Story | starter-story |
-   | Inner_Work | (TBD) |
-   | AI_Leaders | ai-leaders |
-   | Founders | founders |
-   | My_First_Million | my-first-million |
-   | AI_Engineering | (TBD) |
+| Folder | Skill Triggered |
+    |--------|----------------|
+    | Starter_Story | starter-story |
+    | Inner_Work | (TBD) |
+    | AI_Leaders | ai-leaders |
+    | Founders | founders |
+    | My_First_Million | my-first-million |
+    | AI_Engineering | ai-engineering |
 
 8. **Confirm success**: Report file saved location to user (or pass to next skill)
 

@@ -51,6 +51,11 @@ Knowledge_OS/
 │   ├── INDEX.md
 │   ├── Raw_Data/
 │   └── Process_data/
+├── AI_Engineering/              # AI Engineering content (operational)
+│   ├── AGENTS.md
+│   ├── INDEX.md
+│   ├── Raw_Data/
+│   └── Process_data/
 ```
 
 ## How the System Works
@@ -73,6 +78,7 @@ Knowledge_OS/
 | founders | Analyze Founders Podcast (interviews & analysis) | ✅ Working |
 | ai-leaders | Analyze AI Leaders interviews | ✅ Working |
 | my-first-million | Analyze My First Million episodes | ✅ Working |
+| ai-engineering | Analyze AI development videos (frameworks, workflows, automation) | ✅ Working |
 
 ### Skill Chaining
 
@@ -85,7 +91,7 @@ When Process_Link saves to a folder with a corresponding analysis skill, it auto
 | AI_Leaders | ai-leaders |
 | Founders | founders |
 | My_First_Million | my-first-million |
-| AI_Engineering | (TBD) |
+| AI_Engineering | ai-engineering |
 
 ### GitHub Integration
 
@@ -95,7 +101,8 @@ When Process_Link saves to a folder with a corresponding analysis skill, it auto
 - founders pushes founder profiles + INDEX
 - ai-leaders pushes AI leader profiles + INDEX
 - my-first-million pushes business insight profiles + INDEX
-- Commit messages follow format: "Add transcript: [title]", "Add starter story: [founder] - [company]", "Add Founders: [Person] - [Topic]", "Add AI Leaders: [Person] - [Topic]", or "Add My First Million: [Guest/Topic]"
+- ai-engineering pushes technical framework profiles + INDEX
+- Commit messages follow format: "Add transcript: [title]", "Add starter story: [founder] - [company]", "Add Founders: [Person] - [Topic]", "Add AI Leaders: [Person] - [Topic]", "Add My First Million: [Guest/Topic]", or "Add AI Engineering: [Framework/Concept]"
 
 ## Current Contents
 
@@ -147,6 +154,22 @@ When Process_Link saves to a folder with a corresponding analysis skill, it auto
 | Arnold Schwarzenegger | The Education of a Bodybuilder | analysis | Arnold: The Education of a Bodybuilder | 2026-05-02 |
 | Demis Hassabis | The Infinity Machine | analysis | The Infinity Machine | 2026-05-02 |
 
+### AI_Engineering (Fully Operational)
+
+**Raw_Data/** (2 transcripts):
+- -QFHIoCo-Ko_Full_Walkthrough_Workflow_for_AI_Coding_—_Matt_Poc.md
+- v4F1gFy-hqg_Why_Software_Fundamentals_Matter_More_Than_Ever.md
+
+**Process_data/** (2 profiles):
+- AI-Engineering-Workflow-Matt-Pocock-2026.md
+- Software-Fundamentals-Matter-More-Than-Ever-2026.md
+
+**INDEX.md:**
+| Framework/Concept | Category | Date Added |
+|-------------------|----------|------------|
+| AI Engineering Workflow (Matt Pocock) | agentic-ai | 2026-05-02 |
+| Software Fundamentals Matter More Than Ever | agentic-ai | 2026-05-02 |
+
 ## Starting a New Session
 
 In a new session, the agent should:
@@ -156,7 +179,8 @@ In a new session, the agent should:
 3. **For Founders queries**, also read `Knowledge_OS/Founders/AGENTS.md` for detailed workflow
 4. **For My_First_Million queries**, also read `Knowledge_OS/My_First_Million/AGENTS.md` for detailed workflow
 5. **For AI_Leaders queries**, also read `Knowledge_OS/AI_Leaders/AGENTS.md` if available
-6. **For skills**, read `Knowledge_OS/Skills/AGENTS.md` for skill documentation
+6. **For AI_Engineering queries**, also read `Knowledge_OS/AI_Engineering/AGENTS.md` for detailed workflow
+7. **For skills**, read `Knowledge_OS/Skills/AGENTS.md` for skill documentation
 7. **Check GitHub** for latest updates if needed: `git pull origin main`
 
 ## Processing a New Transcript
@@ -167,7 +191,7 @@ Process_Link <YouTube_URL>
 ```
 
 The skill will:
-1. Ask for folder selection (Starter_Story, My_First_Million, AI_Leaders, etc.)
+1. Ask for folder selection (Starter_Story, My_First_Million, AI_Leaders, Founders, AI_Engineering, etc.)
 2. Extract transcript to Raw_Data
 3. Auto-trigger corresponding analysis skill (if available)
 4. Create profile in Process_data
