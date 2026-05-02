@@ -7,4 +7,5 @@
 | David G. | Abundance & Spirituality | kabbalah | 2026-05-02 |
 | David Ghiyam | Collapse Time & Future Self | kabbalah | 2026-05-02 |
 | Rabbi Manis Friedman | Purpose of Life & Selflessness | kabbalah | 2026-05-02 |
+| Henry Shukman | Zen & Mind Silence | Philosophy | 2026-05-03 |
 | Rabbi Manis Friedman | Marriage, Love & Intimacy | Kabbalah | 2026-05-02 |
