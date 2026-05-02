@@ -1,7 +1,8 @@
-# AI Leaders INDEX
+# AI_Leaders INDEX
 
 | Person | Topic | Date Added |
 |--------|-------|------------|
-| Evan Spiegel | Snap Product Innovation | 2026-05-02 |
-| Cat Wu | Anthropic Product Management | 2026-05-02 |
-| Nikhyl Singhal | PM AI Upheaval | 2026-05-02 |
+| Max Schoening | AI Product Leadership | 2026-05-02 |
+| Cat Wu | Anthropic | 2026-05-02 |
+| Evan Spiegel | Snap Inc. | 2026-05-02 |
+| Nikhyl Singhal | Skip Community / Skip Coach | 2026-05-02 |
