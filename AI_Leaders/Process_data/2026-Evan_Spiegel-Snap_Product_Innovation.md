@@ -163,6 +163,18 @@ Most tech leaders believe people will just adopt new AI technology as it emerges
 
 ---
 
+# 📚 Recommended Books
+
+---
+
+## Loonshots by Safi Belell
+
+> 📚 **Why recommended:** Mentioned when discussing innovation process at Snap
+
+> 📖 **What it's about:** Book about the innovation process and how to foster creative breakthroughs in organizations
+
+---
+
 # 👁️ Their Blind Spot
 
 ---

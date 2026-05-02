@@ -159,6 +159,26 @@ Most people build automations that work 90-95% of the time and then give up. Cat
 
 ---
 
+# 📚 Recommended Books
+
+---
+
+## How Asia Works
+
+> 📚 **Why recommended:** Recommended in lightning round as favorite book
+
+> 📖 **What it's about:** About governments that make long lasting successful economies
+
+---
+
+## Paper Menagerie
+
+> 📚 **Why recommended:** Recommended in lightning round as a fun read
+
+> 📖 **What it's about:** A book of short stories
+
+---
+
 # 👁️ Their Blind Spot
 
 ---

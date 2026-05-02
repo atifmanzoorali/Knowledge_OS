@@ -171,6 +171,12 @@ Conventional wisdom: As products multiply, design becomes more important for dif
 
 ---
 
+# 📚 Recommended Books
+
+> 📚 No books mentioned in this transcript.
+
+---
+
 # 👁️ Their Blind Spot
 
 ---

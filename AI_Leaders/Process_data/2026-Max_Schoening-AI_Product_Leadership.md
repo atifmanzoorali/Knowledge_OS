@@ -168,11 +168,31 @@ Max explains he's not code out of utility but intellectual challenge—like play
 
 ---
 
-# Books Referenced
+# 📚 Recommended Books
 
-- **"Code" by Charles Petzold** — How computers actually work; "surprisingly many professionally employed programmers don't know how computers work"
-- **"Tools for Conviviality" by Ivan Illich** — Tools that let users exercise human ingenuity vs. industrial-scale tools
-- **"Seeing like a State"** — How executives create "fake legibility" that doesn't reflect reality
+---
+
+## Code by Charles Petzold
+
+> 📚 **Why recommended:** Mentioned when discussing how computers work
+
+> 📖 **What it's about:** How computers actually work; "surprisingly many professionally employed programmers don't know how computers work"
+
+---
+
+## Tools for Conviviality by Ivan Illich
+
+> 📚 **Why recommended:** Referenced in context of malleable software
+
+> 📖 **What it's about:** Tools that let users exercise human ingenuity vs. industrial-scale tools
+
+---
+
+## Seeing like a State
+
+> 📚 **Why recommended:** Discussed in context of executive thinking
+
+> 📖 **What it's about:** How executives create "fake legibility" that doesn't reflect reality
 
 ---
 
