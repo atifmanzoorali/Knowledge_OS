@@ -52,3 +52,7 @@
 
 1. Read `Knowledge_OS/AGENTS.md`
 2. Check for updates: `git pull origin main`
+
+## Important Tool Behavior
+
+> **Note:** The Read tool truncates display at ~2000 characters per line. When you see "(line truncated to 2000 chars)" in tool output, it means only the DISPLAY is limited — the file content is complete. To verify actual file size, run: `(Get-Item "filepath").Length`
