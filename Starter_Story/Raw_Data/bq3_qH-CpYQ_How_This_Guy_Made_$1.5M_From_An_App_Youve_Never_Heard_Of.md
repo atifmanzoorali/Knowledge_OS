@@ -1,0 +1,96 @@
+---
+video_id: bq3-qH-CpYQ
+title: "How This Guy Made $1.5M From An App You've Never Heard Of"
+channel: "Starter Story"
+duration: 857
+view_count: 0
+upload_date: 20260317
+tags: []
+thumbnail: https://i.ytimg.com/vi/bq3-qH-CpYQ/maxresdefault.jpg
+---
+
+Jordan: You've never heard of this app. 95% of you do not realize that this is an industry.
+
+Jordan: This is Jordan and he's made over $1.5 million from a single app, but I can guarantee you've never heard of it.
+
+Jordan: My product doesn't have a user interface. There's no mobile app. You cannot download it on your phone.
+
+Jordan: Here's the thing. Jordan didn't just build another trending idea. He found a customer that almost nobody is building for. Then he went all in and it worked.
+
+Jordan: I built my MVP. I released it and then I had 200 paying users and I was profitable from within the first month.
+
+Pat Walls: So, I brought Jordan onto the channel to tell the whole story. And in this episode, we'll dive into how he found this hidden market that nobody's building for, the secret to how he got his first 200 paying users, and the business idea you've never heard of that is absolutely crushing it. I'm not going to spoil it, you just have to watch.
+
+Pat Walls: Let's dive in. I'm Pat Walls and this is Starter Story.
+
+Pat Walls: Jordan, welcome to the channel. Tell me about who you are, what you built, and what's your story.
+
+Jordan: Hey, my name is Jordan and I've solo bootstrapped two businesses that have each made over a million in total revenue. The first one is pretty boring, mainstream, normal. You know, working on self-driving cars, drones for famous companies, but you probably wouldn't guess the second one. It's in a category 95% of people don't even think of as an industry. That's what I'm happy to talk about.
+
+Pat Walls: Okay. Well, I'm excited to get into it. When you told me about what your app does, I got super excited because I think it's really, really cool. We're going to talk all about it, but before we do, let's talk about how you get into building apps. What's your background?
+
+Jordan: So, when I was a kid, I wanted to be like a scientist or an engineer or an astronaut. And I went to grad school. I got a masters of science. I worked on a moon rover and some other robotic stuff in grad school. When I graduated, I got a corporate job as a researcher, big American company, a Fortune 100. And I thought the corporate world was a little boring. So I taught myself how to code and when I went to San Francisco and from there I got more into entrepreneurship.
+
+Pat Walls: Okay, cool. So you get into corporate America, you realize it's not exactly for you. It reminds me a little bit of my story. I went to college, went to the corporate world and realized I want to build stuff. I want to learn how to code. So let's talk about that. This app that we're talking about today, how did you learn to build it?
+
+Jordan: By the time I started this project, I already had probably about a decade of experience writing software. So I wasn't completely clueless. And so it took me a month to build the prototype, which is what I used to validate the idea. And then another month to build the payment system. So from the second month, it was profitable. So it took about one month to get the first 200 users on the platform and it's just kind of grown.
+
+Pat Walls: What I love about Jordan's story is that he found this hyper niche problem that nobody was paying attention to. And then he turned this hidden idea into a $300,000 per year SAS business. I think the best business ideas, ones like these, solve a real problem for a very niche type of customer. But how do you actually go about finding these ideas?
+
+Jordan: Well, in partnership with HubSpot, we built a free database of over 190 proven micro SASS ideas that are already making money right now. This database includes real revenue numbers, traffic, cost to start, pricing models, growth tactics, all of it. So, if you want to find your next idea, just head to the first link in the description to grab the database for free. All right, let's get back to the episode.
+
+Pat Walls: Okay, cool. Well, you got 200 users. It wasn't a million users, but 200. That's when you know you had something. Let's talk about the tech stack. Can you walk me through that?
+
+Jordan: Sure. I built it in Typescript because I built almost everything in Typescript. I mean, nowadays you do everything in AI. So, again, this was made in the stone age back when we would write code manually. But at this point, I haven't opened my code editor in 3 to 6 months. I have the AI system writing all the code for me. AI is the new text stack is my point. But specifically on my project, what I used is TypeScript like I said, React for the front end, Postgress as the database, Reddus as the in-memory database, which I use with the queuing system, Offzero because no one wants to write their own login system. So you use something that someone else wrote, Prisma, which is a helps it makes it easier to make calls to your database. Although nowadays, I guess technically the AI does it for you. So perhaps these things aren't as useful.
+
+Jordan: and Zod which is a way to make sure that information coming in from external servers can be validated to a certain schema and also a lot of docker containers. One question I get a lot is, "I got a brilliant business idea. What language should I use?" And the answer is, "It doesn't really matter. Do what you think works. Do what you think is interesting. The tech stack is not that important as sheer speed."
+
+Pat Walls: Love that. There's one more skill that I think is still very, very valuable. Is to have good ideas. Let's talk about that. How'd you come up with the idea for this eventual app that makes over $300,000 a year?
+
+Jordan: So, I had been working in San Francisco as a freelance software engineer, and I had a guy I was working with. I was producing a mobile app for him and we were having a meeting to finish up the project. It was near completion and I go on to the Zoom call and I get there and his girlfriend who I wasn't expecting was there and she was really upset and she just told me he got sent to prison and that kind of just sort of shocked me a lot. One day he's here and you're talking and you're working with him and the next day he's gone. So I kept in touch with him for a couple years, you know, paper letters, very high-tech. Eventually, he told me how a lot of these services in prison are just a massive scam. It offers not very good quality services at a very high price. So, I figured I could do something better and lots of people who use my product degree.
+
+Pat Walls: Okay. I mean, that's a crazy story. Usually, people just find ideas from, you know, some AI thing that they want to help do. But you built something in the prison industry, which is just wild. So, you come up with this idea to improve the lives of people that are in prison. How did you validate this idea?
+
+Jordan: In this situation, it's a bit different. Prison is a closed ecosystem. And so, you can't easily send them a link to, you know, your web page and they can check out your idea and you collect email addresses. It's not going to work. So, in this step, validating the idea and building the MVP were the same thing. I had to build the MVP, get it in front of them in order to validate it. So, I talked to my contacts in the prison. I said, "Hey, here's this tool I want to build. I've heard you guys are currently using older technology. Doesn't work very well. It's overpriced." So, here's what I envision could be a better product for you. And so, you get a lot of feedback. People were super responsive for this. People were telling other people about it. And like I said, within a month, I had 200 users, and that was enough for me to validate it.
+
+Pat Walls: Okay, cool. So, you kind of mentioned a little bit earlier that you're the type of person that has lots and lots of business ideas. I think a lot of people watching this channel also feel the same. They want to build lots and lots of things. So, what would be your advice for someone watching this who wants to build something and make sure it's validated?
+
+Jordan: The specifics about how to validate aren't as important as the fact that you must validate. And what I mean by that is a lot of entrepreneurs, they fall in love with their idea. You've probably heard lots of people, they say, "Oh, I've got this idea for an app." And they spend 12 months creating the perfect mobile app. They haven't shown it to anyone. They have no feedback from actual customers. Validation is not necessarily a specific strategy. It's do you want to validate? Because as soon as you validate, your idea goes from a little thing in your head that you love and is so protected to the world. and the world is probably going to spit on it and they're going to hate it and they're going to think it's boring. You can look up in five minutes on the internet how to validate any specific thing. The point is most people don't want to validate because if you validate it means you might invalidate your idea and most people it's an emotional thing. They don't want to. They're too emotionally invested in the idea of being an entrepreneur. Except that you must validate and you must be willing to let your idea die.
+
+Pat Walls: That's a great piece of advice or insight is that validation isn't a specific framework or strategy. So, if you're coming on here watching this thinking, "Okay, I'll follow this and I'll validate." Like you said, just do it. So, validate fast, validate often, validate early, that's what I see from the hundreds of people that we've brought onto this YouTube channel. Let's talk about growth. How'd you get people to use your thing and eventually turn it into a 300K per year app?
+
+Jordan: So, Prison is a closed ecosystem. It is very difficult if you're on the outside to communicate and vice versa. So I had a few people on the inside who I was talking about with my project and they just showed it to other people and then those people showed it to other people because if you create a good product and it resonates with people, people will be your zealots, right? They'll be your cultists. Like I have heard this expression, Apple doesn't have customers, they have cult members. And that's kind of an exaggeration, but it's true. Lots of people who like these products want to talk about it. So it's all word of mouth. Honestly, I know people want like a cooler answer, but no, it's just all word of mouth. I did build an internal recruitment system where if one of our customers would recruit another customer and the other person signed up and started paying for the product, the first person would get like a month or so of free credits. So, that helped. The way you want to think about growth and entrepreneurship is as a scientist. So, just be willing to experiment, be willing to fail, come up with a strategy. It's probably terrible, but you will get data back and then you will be able to reiterate on that.
+
+Pat Walls: Okay. I 100% agree with that. I want to change topics and actually talk about this app. Can you explain what is the actual app that you built that makes $300,000 a year?
+
+Jordan: Parakeet Chat is an AI learning communication app for incarcerated people. It helps them talk to chat GPT and other AI services so they can learn whatever they want. Mostly they use it to learn about their own legal rights and also there's a communication aspect where people can use it to talk to their family. We've had a lot of messages from our users saying, "Oh, thank you. Thanks for your assistant. I was able to talk to my daughter. I haven't been able to talk to her in years and she sent me a hello message and it means the world for me."
+
+Jordan: From the perspective of the users, it's the internal prison email system. They just email a specific email address and our bot processes that information and then sends them a reply. And so our app is essentially a chat bot that people on the inside can use to talk to and it will look up things on chat GPT. It'll look up sports statistics. That is it. There is no app in the sense that you can go on the Play Store and download it.
+
+Pat Walls: This is so cool. Well, I don't know that much about the email system that they use, but you built around these limitations. I'm curious and what a lot of people be wondering is like how does an app like this make money or how do prisoners even pay for this since I'm assuming that's a little bit more complicated.
+
+Jordan: That's a good question. In most businesses, customers and the users are the same people. In this, it's different. So, the users are the incarcerated people on the inside. The customers are their families on the outside. And it's just a monthly SAS. The customers just pay for it. It's 15 or 20 bucks a month depending on the plan you want. There's a discount if you get yearly. Last year 2025, Parakeet Chat made a little over 300K in revenue and in total over the lifetime it has made 1.5 million American. And in the last month, you can check that live if you want on trust MR if you don't trust me. total amount of people who've ever tried it is around 30,000 people and that's 20% of the entire federal prison population in the United States. So if you know someone who's in federal prison or has been there's a pretty good chance that they've used it that means you know someone on the inside talking to their family. So almost 100,000 family connections that wouldn't exist if this product didn't happen. And we've sent out like 9 million messages since then.
+
+Pat Walls: When people use parakeet chat, most of them it's studying case law and legal research. I would assume it's probably about their own legal case, understanding their rights. They have very limited resources. So that's the biggest use case. We actually get a lot of entrepreneurial questions through the platform and a lot of them I would say are probably smarter than the average ones I get on the outside.
+
+Pat Walls: That's awesome, man. I mean, I think that's awesome that there's a lot of entrepreneurial questions cuz I know that when you get out of prison, it can be tough to get back into the workforce. So starting a business may be a great option for people who have been recently incarcerated.
+
+Pat Walls: Last question that we ask all founders who come on to Starter Story. If you could go back in time and stand on Jordan's shoulders before you got started, even maybe before you started building stuff in Silicon Valley and learned to code and all that, what would be your advice for anyone watching this who wants to build stuff like you did?
+
+Jordan: If I had to go back in time and give young Jordan advice, I would tell him everything you think about business is wrong. This is not just an entrepreneur thing. This is in general. Most people's most ideas about most things are not grounded in anything. If you've not done business or any specific subject, everything you believe is probably wrong. I didn't do everything perfectly with parakeet. You always make mistakes. But on the whole, I had previously made enough mistakes that I didn't make them later on. And the reason things worked out pretty well in this project is not because I'm a brilliant, I'm a genius, is I've made these mistakes 10 years ago. So, it took me 10 years to get to this point. People say an overnight success, no such thing. it doesn't exist. Reality is if you want to be a successful entrepreneur, you need to start up right now. You need to go and come up with a stupid idea, an idiotic idea that everyone tells you will not work and just do it right now. Even if you know it's going to fail, good. Even better if you know if it's going to fail because then you have no illusions that it will succeed. Just do it in a way that doesn't completely you and lose all your money and get you arrested, right? But do it in a controlled way and you will learn more from that mess up than you will from reading 20 books.
+
+Pat Walls: That's the best advice I've heard all week. Love that. Thanks for coming on the show, Jordan. Awesome business, awesome story, awesome insights. Thanks for coming on.
+
+Jordan: I'm glad. Thanks for having me, Pat.
+
+Pat Walls: All right, Gus, producer of Starter Story. What do you think?
+
+Gus: First thought is super unique business. I had never heard of that. That's one of the reasons I was like interested in having him on the channel and that stood out to me. It's like, wow, there is really a business everywhere.
+
+Gus: I personally love the business. incarcerated people or prisoners are getting access to AI tools that can help them with things like case law and stuff like that. So, you're sitting there in prison wanting to learn, wanting to better your situation, wanting to help you fight your case.
+
+Gus: And like we talked about in the last video we just filmed, building niche apps for small communities is maybe the future of AI and building businesses.
+
+Gus: A lot of the times we'll interview people that are young, 22 years old, 23 years old, they have this successful app and then you kind of feel bad when you see that because you're older than them and maybe it feels like they just started out and then figured out right away. But every time you look at those stories, you realize that there's still like 6 7 10 years behind. They just got started earlier and they made all those mistakes. And as he mentioned, there is no such thing as an overnight success.
+
+Gus: So if you're watching this and thinking, I want to get started. I want to invalidate some ideas. Check out that link I put down there in the description where you can find micro SAS ideas, some that might be similar to this that serve niche communities that do one thing, they do one thing well. I'll put that link in the description. It's free. You can download it. Hope you enjoyed this episode. We'll see you in the next one. Peace.
