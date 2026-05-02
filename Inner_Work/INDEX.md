@@ -4,3 +4,4 @@
 |---------|-------|----------|------------|
 | Apex Mindset | Break Free From Past Self - Memory Chip Concept | personal-growth | 2026-05-02 |
 | David G. | Abundance & Spirituality | kabbalah | 2026-05-02 |
+| Unknown (Spiritual Teacher) | Attention & Energy Management | spirituality | 2026-05-02 |
