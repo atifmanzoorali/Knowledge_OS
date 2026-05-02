@@ -49,9 +49,9 @@ This skill takes a YouTube URL, asks the user which category folder to save it i
    |--------|----------------|
    | Starter_Story | starter-story |
    | Inner_Work | (TBD) |
-   | AI_Leaders | (TBD) |
+   | AI_Leaders | ai-leaders |
    | Founders | (TBD) |
-   | My_First_Million | (TBD) |
+   | My_First_Million | my-first-million |
    | AI_Engineering | (TBD) |
 
 8. **Confirm success**: Report file saved location to user (or pass to next skill)
@@ -74,11 +74,11 @@ git push origin main
 
 ### Git Push Workflow (With skill chaining)
 
-When starter-story skill completes, it will push:
+When starter-story or my-first-million skill completes, it will push:
 ```bash
-git add Starter_Story/Process_data/<processed_file.md>
-git add Starter_Story/INDEX.md
-git commit -m "Add starter story: <founder_name> - <company>"
+git add <folder>/Process_data/<processed_file.md>
+git add <folder>/INDEX.md
+git commit -m "Add <skill_name>: <topic/guest>"
 git push origin main
 ```
 

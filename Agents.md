@@ -27,6 +27,10 @@ Knowledge_OS/
 │   │       └── folder_structure.md
 │   └── starter-story/           # Analyzes founder interviews
 │       └── SKILL.md
+│   ├── ai-leaders/              # Analyzes AI leader interviews
+│       └── SKILL.md
+│   └── my-first-million/        # Analyzes My First Million episodes
+│       └── SKILL.md
 ├── Starter_Story/               # Starter Story content (fully operational)
 │   ├── AGENTS.md                # Detailed workflow documentation
 │   ├── INDEX.md                 # Master index of processed profiles
@@ -35,15 +39,19 @@ Knowledge_OS/
 ├── Inner_Work/                  # (Reserved for future skills)
 │   ├── AGENTS.md
 │   └── Raw_Data/
-├── AI_Leaders/                  # (Reserved for future skills)
+├── AI_Leaders/                  # AI Leaders content (operational)
 │   ├── AGENTS.md
-│   └── Raw_Data/
+│   ├── INDEX.md
+│   ├── Raw_Data/                # Raw transcripts
+│   └── Process_data/            # Analyzed AI leader profiles
 ├── Founders/                    # (Reserved for future skills)
 │   ├── AGENTS.md
 │   └── Raw_Data/
-├── My_First_Million/            # (Reserved for future skills)
+├── My_First_Million/            # My First Million content (operational)
 │   ├── AGENTS.md
-│   └── Raw_Data/
+│   ├── INDEX.md
+│   ├── Raw_Data/                # Raw transcripts
+│   └── Process_data/            # Analyzed business profiles
 └── AI_Engineering/              # (Reserved for future skills)
     ├── AGENTS.md
     └── Raw_Data/
@@ -67,9 +75,9 @@ Knowledge_OS/
 | Process_Link | Extract transcripts from YouTube URLs | ✅ Working |
 | starter-story | Analyze Starter Story interviews | ✅ Working |
 | (TBD) | Inner_Work content | 🔜 Planned |
-| (TBD) | AI_Leaders content | 🔜 Planned |
+| ai-leaders | Analyze AI Leaders interviews | ✅ Working |
 | (TBD) | Founders content | 🔜 Planned |
-| (TBD) | My_First_Million content | 🔜 Planned |
+| my-first-million | Analyze My First Million episodes | ✅ Working |
 | (TBD) | AI_Engineering content | 🔜 Planned |
 
 ### Skill Chaining
@@ -80,9 +88,9 @@ When Process_Link saves to a folder with a corresponding analysis skill, it auto
 |--------|----------------|
 | Starter_Story | starter-story |
 | Inner_Work | (TBD) |
-| AI_Leaders | (TBD) |
+| AI_Leaders | ai-leaders |
 | Founders | (TBD) |
-| My_First_Million | (TBD) |
+| My_First_Million | my-first-million |
 | AI_Engineering | (TBD) |
 
 ### GitHub Integration
@@ -90,7 +98,9 @@ When Process_Link saves to a folder with a corresponding analysis skill, it auto
 - All changes automatically pushed to GitHub
 - Process_Link pushes raw transcripts
 - starter-story pushes processed profiles + INDEX
-- Commit messages follow format: "Add transcript: [title]" or "Add starter story: [founder] - [company]"
+- ai-leaders pushes AI leader profiles + INDEX
+- my-first-million pushes business insight profiles + INDEX
+- Commit messages follow format: "Add transcript: [title]", "Add starter story: [founder] - [company]", "Add AI Leaders: [Person] - [Topic]", or "Add My First Million: [Guest/Topic]"
 
 ## Current Contents
 

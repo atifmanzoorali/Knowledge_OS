@@ -42,3 +42,48 @@ A skill to transform raw founder interview transcripts into structured startup p
 - Output: Structured startup profile with Executive Summary, Product, Tech Stack, Distribution, Frameworks, Metrics
 - Updates INDEX.md after saving
 - **Auto-push to GitHub:** Processed profile + INDEX pushed automatically
+
+---
+
+## ai-leaders
+
+A skill to transform raw AI leader interview transcripts into deep-dive intelligence profiles.
+
+**Trigger phrases:** "AI Leaders", "analyze this AI leader", "add [Person] interview", "process AI leaders"
+
+**Workflow:** Receives input from Process_Link, analyzes transcript using template, saves to Knowledge_OS/AI_Leaders/Process_data/
+
+**Folder structure:**
+- ai-leaders/
+  - SKILL.md
+
+### Features
+
+- Input: .md file from Process_Link (with transcript)
+- Output: Intelligence profile with AI Thesis, Mental Models, Quotes, Contrarian Views, What They're Building, Blind Spots, Naval-Style Maxim
+- Updates INDEX.md after saving
+- Rebuilds search index
+- **Auto-push to GitHub:** Processed profile + INDEX pushed automatically
+
+---
+
+## my-first-million
+
+A skill to transform raw My First Million podcast transcripts into structured business insight profiles.
+
+**Trigger phrases:** "process my first million", "analyze this My First Million episode", "add My First Million transcript", "My First Million interview", "process MFM episode"
+
+**Workflow:** Receives input from Process_Link, analyzes transcript using unified template (adapts for brainstorm/interview/breakdown), saves to Knowledge_OS/My_First_Million/Process_data/
+
+**Folder structure:**
+- my-first-million/
+  - SKILL.md
+
+### Features
+
+- Input: .md file from Process_Link (with transcript)
+- Output: Business insight profile with Executive Summary, Key Insights, Lessons, Quotes, Resources (includes books)
+- Unified template adapts based on episode type (brainstorm/interview/breakdown)
+- Updates INDEX.md after saving
+- Rebuilds search index
+- **Auto-push to GitHub:** Processed profile + INDEX pushed automatically
