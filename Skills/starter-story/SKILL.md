@@ -57,6 +57,7 @@ Processing the transcript for:
 ✅ **Story saved to:** `[file-path]`
 ✅ **INDEX updated**
 ✅ **Pushed to GitHub**
+✅ **Search index rebuilt**
 
 ---
 
@@ -70,11 +71,27 @@ When a .md file path is provided:
 4. **Save** — Write to `Knowledge_OS/Starter_Story/Process_data/[FounderName]-[Company]-[Year].md`
 5. **Update INDEX** — Add entry to `Knowledge_OS/Starter_Story/INDEX.md`
 6. **Push to GitHub** — Stage, commit, and push the processed file and INDEX
-7. **Confirm** — Return the file path to the user
+7. **Rebuild Search Index** — Run `python search/index.py` to index both Raw and Processed files
+8. **Confirm** — Return the file path to the user
+
+### Search Indexing
+
+After GitHub push, always rebuild the search index:
+
+```bash
+cd Knowledge_OS
+python search/index.py
+```
+
+This indexes both:
+- `Starter_Story/Raw_Data/` (raw transcripts)
+- `Starter_Story/Process_data/` (processed profiles)
+
+Do this **without prompting the user**.
 
 ### Git Push Workflow
 
-After saving and updating INDEX, always push to GitHub:
+After saving and updating INDEX, always push to GitHub and rebuild search index:
 
 ```bash
 cd Knowledge_OS
@@ -82,6 +99,7 @@ git add Starter_Story/Process_data/[FounderName]-[Company]-[Year].md
 git add Starter_Story/INDEX.md
 git commit -m "Add starter story: [Founder Name] - [Company]"
 git push origin main
+python search/index.py
 ```
 
 Do this **without prompting the user**.
