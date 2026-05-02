@@ -109,3 +109,19 @@ Confidence: [High/Medium/Low]
 - Search index is rebuilt after each new entry
 - Template adapts based on episode type (brainstorm/interview/breakdown)
 - Books are always included in Resources section (user requirement)
+
+## Current Contents
+
+### Raw_Data/
+- _cA9WEcBLH0_Follow_your_bliss.md (Ep. 818 - Career Advice)
+- I8j_yBfAepY_Gruns_1B_Exit.md (Ep. 820 - Chad/Grüns $1B Exit)
+
+### Process_data/
+- Follow_Your_Bliss-2026.md
+- Chad_Gruns_1B_Exit-2026.md
+
+### INDEX.md
+| Episode | Guest/Topic | Category | Date Added |
+|---------|-------------|----------|------------|
+| Ep. 818 | Follow your bliss - Career Advice | brainstorm | 2026-05-02 |
+| Ep. 820 | Chad - Grüns $1B Exit | interview | 2026-05-02 |

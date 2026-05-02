@@ -120,14 +120,32 @@ When Process_Link saves to a folder with a corresponding analysis skill, it auto
 | Marc Lou | 35 Startups | 2026 | 2026-05-02 |
 | Jeremy Redman | Taskmagic | 2026 | 2026-05-02 |
 
+### My_First_Million (Fully Operational)
+
+**Raw_Data/** (2 transcripts):
+- _cA9WEcBLH0_Follow_your_bliss.md (Ep. 818 - Career Advice)
+- I8j_yBfAepY_Gruns_1B_Exit.md (Ep. 820 - Chad/Grüns $1B Exit)
+
+**Process_data/** (2 profiles):
+- Follow_Your_Bliss-2026.md
+- Chad_Gruns_1B_Exit-2026.md
+
+**INDEX.md:**
+| Episode | Guest/Topic | Category | Date Added |
+|---------|-------------|----------|------------|
+| Ep. 818 | Follow your bliss - Career Advice | brainstorm | 2026-05-02 |
+| Ep. 820 | Chad - Grüns $1B Exit | interview | 2026-05-02 |
+
 ## Starting a New Session
 
 In a new session, the agent should:
 
 1. **First**, read `Knowledge_OS/AGENTS.md` for system overview
 2. **For Starter_Story queries**, also read `Knowledge_OS/Starter_Story/AGENTS.md` for detailed workflow
-3. **For skills**, read `Knowledge_OS/Skills/AGENTS.md` for skill documentation
-4. **Check GitHub** for latest updates if needed: `git pull origin main`
+3. **For My_First_Million queries**, also read `Knowledge_OS/My_First_Million/AGENTS.md` for detailed workflow
+4. **For AI_Leaders queries**, also read `Knowledge_OS/AI_Leaders/AGENTS.md` if available
+5. **For skills**, read `Knowledge_OS/Skills/AGENTS.md` for skill documentation
+6. **Check GitHub** for latest updates if needed: `git pull origin main`
 
 ## Processing a New Transcript
 
@@ -137,12 +155,13 @@ Process_Link <YouTube_URL>
 ```
 
 The skill will:
-1. Ask for folder selection (select Starter_Story)
+1. Ask for folder selection (Starter_Story, My_First_Million, AI_Leaders, etc.)
 2. Extract transcript to Raw_Data
-3. Auto-trigger starter-story skill
+3. Auto-trigger corresponding analysis skill (if available)
 4. Create profile in Process_data
 5. Update INDEX.md
 6. Push all changes to GitHub
+7. Rebuild search index
 
 ## Scripts
 
