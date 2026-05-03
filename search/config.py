@@ -84,6 +84,11 @@ class SearchConfig(BaseSettings):
         description="Root directory of Knowledge OS project",
     )
 
+    log_dir: Path = Field(
+        default=Path(__file__).parent.parent / "logs",
+        description="Directory for error log files",
+    )
+
     def __init__(self, **kwargs: object) -> None:
         """Initialize config, loading from .env if present."""
         super().__init__(**kwargs)
@@ -127,3 +132,4 @@ N_RESULTS = get_config().n_results
 CHROMA_DB_PATH = get_config().chroma_db_path
 MODEL_NAME_EMBED = get_config().model_name_embed
 KNOWLEDGE_OS_ROOT = get_config().knowledge_os_root
+LOG_DIR = get_config().log_dir

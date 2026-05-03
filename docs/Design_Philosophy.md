@@ -170,8 +170,32 @@ These were intentional choices, not limitations:
 
 ## What I'd Add Next
 
-### Self-Healing
-The system currently logs errors but doesn't retry automatically. The next priority is adding retry logic so failed API calls try again, and failed extractions get queued for later.
+### Self-Healing (Implemented ✓)
+The system now has comprehensive self-healing capabilities:
+
+**Auto-Retry Logic:**
+- API calls retry automatically (3 attempts with exponential backoff)
+- Rate limit errors wait 5s → 10s → 20s before retrying
+- Timeout errors reduce request size (25% fewer tokens) and retry
+
+**Language Fallback:**
+- Transcript extraction tries multiple languages: en-US → en-GB → en → auto → es → pt
+- If one language fails, it automatically tries the next
+
+**Auto Index Rebuild:**
+- If search index is empty, system auto-rebuilds it silently
+- No manual intervention needed
+
+**User Alerts:**
+- Every healing action shows a clear message (📡 ⏱️ 🌐 🔄 ⚠️ ✅)
+- Non-technical user always knows what's happening
+
+**Healing Log (For Future Sessions):**
+- All healing events logged to `logs/healing_log.json`
+- Next agent session reads this to see what was tried and what worked
+- If auto-fix fails, detailed error saved for next session to continue where this one left off
+
+This is "moderate" self-healing — the system fixes within tight bounds (retries, language fallbacks, index rebuilds) but never changes code, config, or deletes files. Those require human approval.
 
 ### Scaling
 Once the YouTube pipeline is perfect, I'd add:

@@ -12,11 +12,15 @@ Example:
 """
 
 import argparse
+import json
 import logging
 import re
 import sys
+from datetime import datetime
 from pathlib import Path
 from typing import Any, Optional
+
+from tenacity import retry, stop_after_attempt, wait_exponential
 
 from yt_dlp import YoutubeDL
 from youtube_transcript_api import YouTubeTranscriptApi
@@ -115,15 +119,91 @@ def get_video_id(url: str) -> Optional[str]:
     return None
 
 
-def get_transcript(video_id: str) -> str:
+LANGUAGE_CODES = ["en-US", "en-GB", "en", "auto", "es", "pt"]
+
+
+def _user_alert(message: str, prefix: str = "ℹ️") -> None:
+    """Print user-facing alert message."""
+    print(f"\n{prefix} {message}\n")
+    logger.info(message)
+
+
+def _get_healing_log_path() -> Path:
+    """Get path to healing log file."""
+    from search.config import get_config
+    config = get_config()
+    return config.log_dir / "healing_log.json"
+
+
+def _load_healing_log() -> dict:
+    """Load existing healing log or create new one."""
+    log_path = _get_healing_log_path()
+    if log_path.exists():
+        try:
+            with open(log_path, "r", encoding="utf-8") as f:
+                return json.load(f)
+        except (json.JSONDecodeError, IOError):
+            pass
+    return {"session_date": datetime.now().strftime("%Y-%m-%d"), "healing_events": []}
+
+
+def _save_healing_log(log_data: dict) -> None:
+    """Save healing log to file."""
+    from search.config import get_config
+    config = get_config()
+    config.log_dir.mkdir(parents=True, exist_ok=True)
+    log_path = _get_healing_log_path()
+    with open(log_path, "w", encoding="utf-8") as f:
+        json.dump(log_data, f, indent=2)
+
+
+def _log_healing_event(
+    error_type: str,
+    error_message: str,
+    fixes_tried: list[dict],
+    outcome: str,
+    next_agent_note: str = "",
+) -> None:
+    """Log a self-healing event for future agent sessions."""
+    log_data = _load_healing_log()
+    event = {
+        "timestamp": datetime.now().isoformat(),
+        "module": "scripts.Transcript_Extraction",
+        "error_type": error_type,
+        "error_message": error_message,
+        "fixes_tried": fixes_tried,
+        "outcome": outcome,
+        "next_agent_note": next_agent_note,
+    }
+    log_data["healing_events"].append(event)
+    _save_healing_log(log_data)
+
+
+def _try_transcript_with_language(video_id: str, lang_code: str, transcript_list: Any, fix_type: str = "manual") -> Optional[Any]:
+    """Try to get transcript with a specific language code."""
+    try:
+        if lang_code == "auto":
+            transcript = transcript_list.find_generated_transcript([])
+        elif fix_type == "manual":
+            transcript = transcript_list.find_manually_created_transcript([lang_code])
+        else:
+            transcript = transcript_list.find_generated_transcript([lang_code])
+        return transcript
+    except NoTranscriptFound:
+        return None
+
+
+def get_transcript(video_id: str, attempt: int = 1, fixes_tried: list | None = None) -> str:
     """
-    Fetch transcript text from a YouTube video.
+    Fetch transcript text from a YouTube video with language fallback.
 
     Attempts to find manual transcript first, then falls back to auto-generated.
-    Returns empty string if no transcript available.
+    Tries multiple language codes if initial attempts fail.
 
     Args:
         video_id: YouTube video ID (11 characters).
+        attempt: Current attempt number (for logging).
+        fixes_tried: List of fixes already attempted (for logging).
 
     Returns:
         Transcript text with sentences joined by spaces.
@@ -131,37 +211,70 @@ def get_transcript(video_id: str) -> str:
     Raises:
         TranscriptNotAvailableError: If transcript cannot be retrieved.
     """
+    if fixes_tried is None:
+        fixes_tried = []
+
     try:
         transcript_api = YouTubeTranscriptApi()
         transcript_list = transcript_api.list(video_id)
 
-        # Try manual transcript first, then auto-generated
-        try:
-            transcript = transcript_list.find_manually_created_transcript(["en"])
-        except NoTranscriptFound:
-            try:
-                transcript = transcript_list.find_generated_transcript(["en"])
-            except NoTranscriptFound as e:
-                raise TranscriptNotAvailableError(
-                    f"No transcript found for video {video_id}"
-                ) from e
+        for i, lang_code in enumerate(LANGUAGE_CODES):
+            if lang_code == "auto":
+                _user_alert(f"Trying any available language transcript...", "🌐")
+            else:
+                _user_alert(f"Trying language: {lang_code}...", "🌐")
 
-        # Fetch and join all text segments
-        segments = transcript.fetch()
-        return " ".join(segment.text for segment in segments)
+            transcript = _try_transcript_with_language(video_id, lang_code, transcript_list, "manual")
+            if transcript is None:
+                transcript = _try_transcript_with_language(video_id, lang_code, transcript_list, "generated")
 
-    except TranscriptsDisabled as e:
-        raise TranscriptNotAvailableError(
-            f"Transcripts are disabled for video {video_id}"
-        ) from e
+            if transcript:
+                fixes_tried.append({"action": f"lang_{lang_code}_success", "result": "success"})
+                segments = transcript.fetch()
+                return " ".join(segment.text for segment in segments)
+
+            fixes_tried.append({"action": f"lang_{lang_code}", "result": "not_found"})
+
+        raise TranscriptNotAvailableError(f"No transcript found for video {video_id} in any language")
+
+    except TranscriptsDisabled:
+        _user_alert(f"Transcripts are disabled for video {video_id}. Skipping...", "⚠️")
+        _log_healing_event("TRANSCRIPT_DISABLED", f"Video {video_id}", fixes_tried, "skipped", "Transcripts disabled by uploader. Cannot auto-fix.")
+        return ""
+
     except CouldNotRetrieveTranscript as e:
-        raise TranscriptNotAvailableError(
-            f"Could not retrieve transcript for video {video_id}"
-        ) from e
+        if attempt < 2:
+            _user_alert(f"Error retrieving transcript (retry {attempt + 1}/2)...", "⚠️")
+            import time
+            time.sleep(2)
+            fixes_tried.append({"attempt": attempt, "action": "retry", "result": "failed"})
+            return get_transcript(video_id, attempt + 1, fixes_tried)
+
+        _log_healing_event("COULD_NOT_RETRIEVE", str(e), fixes_tried, "failed", "Network or API error persisted after retry.")
+        raise TranscriptNotAvailableError(f"Could not retrieve transcript for video {video_id}") from e
+
     except Exception as e:
-        raise TranscriptNotAvailableError(
-            f"Unexpected error retrieving transcript: {e}"
-        ) from e
+        _log_transcript_error("get_transcript", video_id, type(e).__name__, str(e))
+        _log_healing_event(type(e).__name__, str(e), fixes_tried, "failed", f"Unexpected error: {type(e).__name__}")
+        raise TranscriptNotAvailableError(f"Unexpected error retrieving transcript: {e}") from e
+
+
+def _log_transcript_error(function: str, video_id: str, error_type: str, error_message: str) -> None:
+    """Log transcript errors to JSON file."""
+    from search.config import get_config
+    config = get_config()
+    log_entry = {
+        "timestamp": datetime.now().isoformat(),
+        "module": "scripts.Transcript_Extraction",
+        "function": function,
+        "video_id": video_id,
+        "error_type": error_type,
+        "error_message": error_message,
+    }
+    config.log_dir.mkdir(parents=True, exist_ok=True)
+    error_log_path = config.log_dir / "errors.log"
+    with open(error_log_path, "a", encoding="utf-8") as f:
+        f.write(json.dumps(log_entry) + "\n")
 
 
 def fetch_video_metadata(url: str, video_id: str) -> dict[str, Any]:
@@ -249,32 +362,26 @@ def process_youtube_url(url: str, output_dir: str) -> None:
         TranscriptNotAvailableError: If transcript cannot be retrieved.
         MetadataExtractionError: If metadata cannot be fetched.
     """
-    # Validate URL and extract video ID
     video_id = get_video_id(url)
     if not video_id:
         raise InvalidURLError(f"Invalid YouTube URL: {url}")
 
-    logger.info(f"Processing video: {video_id}")
+    _user_alert(f"Processing video: {video_id}", "📺")
 
-    # Ensure output directory exists
     output_path = Path(output_dir)
     output_path.mkdir(parents=True, exist_ok=True)
 
-    # Fetch metadata
     metadata = fetch_video_metadata(url, video_id)
 
-    # Fetch transcript
     transcript_text = get_transcript(video_id)
     if not transcript_text:
-        logger.warning(f"No transcript available for video {video_id}")
-        return
+        _user_alert(f"No transcript available for video {video_id}. Saved metadata only.", "⚠️")
 
-    # Generate filename
     sanitized_title = sanitize_filename(metadata.get("title", ""))
     filename = f"{video_id}_{sanitized_title}.md" if sanitized_title else f"{video_id}.md"
 
-    # Save to disk
     save_transcript(output_path / filename, metadata, transcript_text)
+    _user_alert(f"Successfully saved: {filename}", "✅")
 
 
 def parse_arguments() -> argparse.Namespace:

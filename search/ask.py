@@ -11,8 +11,12 @@ Usage:
 """
 
 import argparse
+import json
 import logging
+import subprocess
 import sys
+import time
+from datetime import datetime
 from pathlib import Path
 from typing import Any, Optional
 
@@ -53,6 +57,82 @@ class LLMQueryError(KnowledgeOSError):
     """Raised when LLM query fails."""
 
     pass
+
+
+def _get_healing_log_path() -> Path:
+    """Get path to healing log file."""
+    config = get_config()
+    return config.log_dir / "healing_log.json"
+
+
+def _load_healing_log() -> dict:
+    """Load existing healing log or create new one."""
+    log_path = _get_healing_log_path()
+    if log_path.exists():
+        try:
+            with open(log_path, "r", encoding="utf-8") as f:
+                return json.load(f)
+        except (json.JSONDecodeError, IOError):
+            pass
+    return {"session_date": datetime.now().strftime("%Y-%m-%d"), "healing_events": []}
+
+
+def _save_healing_log(log_data: dict) -> None:
+    """Save healing log to file."""
+    config = get_config()
+    config.log_dir.mkdir(parents=True, exist_ok=True)
+    log_path = _get_healing_log_path()
+    with open(log_path, "w", encoding="utf-8") as f:
+        json.dump(log_data, f, indent=2)
+
+
+def _log_healing_event(
+    error_type: str,
+    error_message: str,
+    fixes_tried: list[dict],
+    outcome: str,
+    next_agent_note: str = "",
+) -> None:
+    """Log a self-healing event for future agent sessions."""
+    log_data = _load_healing_log()
+    event = {
+        "timestamp": datetime.now().isoformat(),
+        "error_type": error_type,
+        "error_message": error_message,
+        "fixes_tried": fixes_tried,
+        "outcome": outcome,
+        "next_agent_note": next_agent_note,
+    }
+    log_data["healing_events"].append(event)
+    _save_healing_log(log_data)
+
+
+def _user_alert(message: str, prefix: str = "ℹ️") -> None:
+    """Print user-facing alert message."""
+    print(f"\n{prefix} {message}\n")
+    logger.info(message)
+
+
+def _auto_rebuild_index() -> bool:
+    """Auto-rebuild search index when empty. Returns True if successful."""
+    _user_alert("Search index is empty. Auto-rebuilding...", "🔄")
+    try:
+        result = subprocess.run(
+            [sys.executable, "-m", "search.index"],
+            cwd=get_config().knowledge_os_root,
+            capture_output=True,
+            text=True,
+            timeout=120,
+        )
+        if result.returncode == 0:
+            _user_alert("Index rebuilt successfully!", "✅")
+            return True
+        else:
+            _user_alert(f"Index rebuild failed: {result.stderr}", "❌")
+            return False
+    except Exception as e:
+        _user_alert(f"Could not auto-rebuild index: {e}", "❌")
+        return False
 
 
 def load_api_key() -> str:
@@ -103,10 +183,18 @@ def search_knowledge(
     collection = chroma_client.get_or_create_collection(name="knowledge")
 
     if collection.count() == 0:
-        raise SearchIndexEmptyError(
-            "No documents in the search index. "
-            "Run 'python search/index.py' to build the index."
-        )
+        if _auto_rebuild_index():
+            collection = chroma_client.get_or_create_collection(name="knowledge")
+            if collection.count() == 0:
+                raise SearchIndexEmptyError(
+                    "No documents in the search index after auto-rebuild. "
+                    "Run 'python search/index.py' to build the index."
+                )
+        else:
+            raise SearchIndexEmptyError(
+                "No documents in the search index. "
+                "Run 'python search/index.py' to build the index."
+            )
 
     model = SentenceTransformer(config.model_name_embed)
     query_embedding = model.encode([query])
@@ -186,20 +274,32 @@ Instructions: Answer based on the context above. Cite the specific source files 
     return prompt
 
 
-def call_deepseek(api_key: str, prompt: str) -> str:
+def call_deepseek(
+    api_key: str,
+    prompt: str,
+    max_tokens: int | None = None,
+    attempt: int = 1,
+    fixes_tried: list | None = None,
+) -> str:
     """
-    Call DeepSeek API to generate an answer.
+    Call DeepSeek API with self-healing logic.
 
     Args:
         api_key: DeepSeek API key.
         prompt: Formatted prompt with context and question.
+        max_tokens: Override max tokens for retry with smaller request.
+        attempt: Current attempt number (for logging).
+        fixes_tried: List of fixes already attempted (for logging).
 
     Returns:
         Generated answer text.
 
     Raises:
-        LLMQueryError: If the API call fails.
+        LLMQueryError: If the API call fails and cannot be auto-healed.
     """
+    if fixes_tried is None:
+        fixes_tried = []
+
     config = get_config()
 
     try:
@@ -217,14 +317,59 @@ def call_deepseek(api_key: str, prompt: str) -> str:
                 },
                 {"role": "user", "content": prompt},
             ],
-            max_tokens=config.max_tokens,
+            max_tokens=max_tokens or config.max_tokens,
             temperature=config.temperature,
         )
 
         return response.choices[0].message.content
 
     except Exception as e:
-        raise LLMQueryError(f"Failed to query DeepSeek: {e}") from e
+        error_msg = str(e)
+        error_type = type(e).__name__
+
+        log_entry = {
+            "timestamp": datetime.now().isoformat(),
+            "module": "search.ask",
+            "function": "call_deepseek",
+            "error_type": error_type,
+            "error_message": error_msg,
+        }
+        config.log_dir.mkdir(parents=True, exist_ok=True)
+        error_log_path = config.log_dir / "errors.log"
+        with open(error_log_path, "a", encoding="utf-8") as f:
+            f.write(json.dumps(log_entry) + "\n")
+
+        if "429" in error_msg or "rate_limit" in error_msg.lower() or "rate limit" in error_msg.lower():
+            if attempt < 3:
+                wait_times = [5, 10, 20]
+                wait = wait_times[attempt - 1]
+                _user_alert(f"Rate limited. Waiting {wait}s before retry (attempt {attempt + 1}/3)...", "📡")
+                time.sleep(wait)
+                fixes_tried.append({"attempt": attempt, "action": f"wait_{wait}s_retry", "result": "failed"})
+                return call_deepseek(api_key, prompt, max_tokens, attempt + 1, fixes_tried)
+            else:
+                _log_healing_event("API_RATE_LIMIT", error_msg, fixes_tried, "failed", "All 3 retry attempts exhausted. Consider checking API quota.")
+                raise LLMQueryError(f"Rate limit persisted after 3 attempts: {e}") from e
+
+        if "timeout" in error_msg.lower() or "timed out" in error_msg.lower():
+            if max_tokens is None and attempt <= 2:
+                new_max_tokens = int(config.max_tokens * 0.75)
+                _user_alert(f"Request timed out. Trying with smaller response ({new_max_tokens} tokens)...", "⏱️")
+                time.sleep(2)
+                fixes_tried.append({"attempt": attempt, "action": f"reduce_max_tokens_to_{new_max_tokens}", "result": "failed"})
+                return call_deepseek(api_key, prompt, new_max_tokens, attempt + 1, fixes_tried)
+            else:
+                _log_healing_event("API_TIMEOUT", error_msg, fixes_tried, "failed", "Timeout persisted after reducing tokens.")
+                raise LLMQueryError(f"Request timeout: {e}") from e
+
+        if attempt < 3:
+            _user_alert(f"API error (attempt {attempt}/3): {error_type}. Retrying...", "⚠️")
+            time.sleep(2 ** attempt)
+            fixes_tried.append({"attempt": attempt, "action": "basic_retry", "result": "failed"})
+            return call_deepseek(api_key, prompt, max_tokens, attempt + 1, fixes_tried)
+
+        _log_healing_event(error_type, error_msg, fixes_tried, "failed", f"Exhausted all fixes. Error type: {error_type}")
+        raise LLMQueryError(f"Failed to query DeepSeek after 3 attempts: {e}") from e
 
 
 def format_response(
@@ -280,10 +425,8 @@ def query_knowledge_base(question: str) -> int:
         Exit code (0 for success, non-zero for error).
     """
     try:
-        # Load API key
         api_key = load_api_key()
 
-        # Search knowledge base
         logger.info("Searching for relevant context...")
         results, total_docs, _ = search_knowledge(question)
 
@@ -299,13 +442,16 @@ def query_knowledge_base(question: str) -> int:
 
         logger.info(f"Found {len(documents)} relevant sources")
 
-        # Generate answer
         logger.info("Generating answer with DeepSeek...")
         prompt = build_prompt(documents, metadatas, question)
         answer = call_deepseek(api_key, prompt)
 
-        # Display response
         format_response(answer, documents, metadatas, distances, question)
+
+        log_data = _load_healing_log()
+        if any(e["outcome"] == "failed" for e in log_data.get("healing_events", [])):
+            _log_healing_event("SESSION_SUCCESS", "Query completed after healing attempts", [], "resolved", "Previous healing attempts succeeded. System is healthy.")
+            _user_alert("Query completed successfully (with auto-healing)!", "✅")
 
         return 0
 
@@ -317,9 +463,11 @@ def query_knowledge_base(question: str) -> int:
         return 1
     except LLMQueryError as e:
         logger.error(f"LLM Error: {e}")
+        _user_alert(f"Could not auto-fix. Error saved for next session.", "⚠️")
         return 1
     except Exception as e:
         logger.error(f"Unexpected error: {e}")
+        _user_alert(f"Unexpected error: {e}", "❌")
         return 1
 
 
