@@ -60,6 +60,7 @@
 1. Read `Knowledge_OS/AGENTS.md`
 2. Check for updates: `git pull origin main`
 3. Read healing log: Check `logs/healing_log.json` to see what errors occurred and what fixes were attempted in previous sessions. Use this to continue where the last session left off.
+4. Quick overview: Check `docs/Structure_Guide.md` for project structure (optional but helpful)
 
 ## Important Tool Behavior
 
