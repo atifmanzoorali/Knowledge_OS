@@ -14,6 +14,7 @@ Skills are autonomous agents that process specific content types. When a transcr
 
 | Skill | Folder | Trigger | Description |
 |-------|--------|---------|-------------|
+| **add-content-folder** | - | Manual | Create new content folders |
 | **Process_Link** | Process_Link | Manual | Extracts YouTube transcripts |
 | **starter-story** | Starter_Story | Auto | Startup founder profiles |
 | **ai-leaders** | AI_Leaders | Auto | AI industry leader profiles |
@@ -72,6 +73,31 @@ flowchart TD
 5. **Output** - Where to save the profile
 6. **INDEX update** - Master index entry
 7. **Git workflow** - Commit and push
+
+---
+
+## add-content-folder Skill
+
+**Purpose:** Create new folder structures with corresponding analysis skills
+
+**Input:** Folder name from user
+
+**Output:** New folder structure in Knowledge_OS/
+
+**Process:**
+1. Get folder name from user
+2. Validate folder doesn't exist
+3. Ask for optional description & custom sections
+4. Create folder structure (AGENTS.md, INDEX.md, Raw_Data/, Process_data/)
+5. Create analysis skill in Skills/
+6. Update Process_Link skill (available folders + skill chaining)
+7. Update AGENTS.md
+8. Push to GitHub
+
+**Trigger phrases:**
+- "add a new folder"
+- "create new content category"
+- "add new skill folder"
 
 ---
 
@@ -234,7 +260,14 @@ flowchart TD
 
 ## Creating a New Skill
 
-To add a new skill:
+To add a new skill, simply use the **add-content-folder** skill:
+
+1. **Trigger:** "add a new folder" or "create new content category"
+2. **Provide folder name:** e.g., "AI_Products"
+3. **Optional:** Add description and custom sections
+4. **Done:** The skill creates everything automatically
+
+Alternatively, manually:
 
 1. **Create folder:** `Skills/my-new-skill/`
 2. **Create SKILL.md:** Document purpose, input, output, template

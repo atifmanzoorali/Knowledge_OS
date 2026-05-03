@@ -1,5 +1,30 @@
 # Skills
 
+## add-content-folder
+
+A skill to create new folder structures with corresponding analysis skills for organizing Knowledge_OS content.
+
+**Trigger phrases:** "add a new folder", "create new content category", "add new skill folder", "create folder for [topic]"
+
+**Workflow:** Gets folder name from user, creates folder structure (AGENTS.md, INDEX.md, Raw_Data/, Process_data/), creates analysis skill, updates Process_Link skill and AGENTS.md
+
+**Folder structure:**
+- add-content-folder/
+  - SKILL.md
+
+### Features
+
+- Gets folder name (Pascal_Case or snake_case)
+- Validates folder doesn't already exist
+- Asks for optional description & custom sections
+- Creates folder structure in Knowledge_OS/
+- Creates analysis skill in Skills/
+- Updates Process_Link with new folder & skill chaining
+- Updates main AGENTS.md folder list
+- Git push workflow
+
+---
+
 ## Process_Link
 
 A skill to extract YouTube transcripts and save them to the appropriate category folder in Knowledge_OS.
