@@ -377,7 +377,7 @@ Use **colorful emojis** to break up monotony and enhance readability. Each secti
 
 > ⚠️ **Maintenance Note:** After ANY edits to this skill file, immediately stage, commit, and push changes:
 > ```bash
-> git add .agents/skills/ai-leaders/SKILL.md
+> git add Skills/ai-leaders/SKILL.md
 > git commit -m "Update ai-leaders skill"
 > git push
 > ```

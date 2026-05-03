@@ -381,7 +381,7 @@ This skill is automatically triggered by Process_Link when the user selects the 
 
 > ⚠️ **Maintenance Note:** After ANY edits to this skill file, immediately stage, commit, and push changes:
 > ```bash
-> git add .agents/skills/ai-engineering/SKILL.md
+> git add Skills/ai-engineering/SKILL.md
 > git commit -m "Update ai-engineering skill"
 > git push
 > ```

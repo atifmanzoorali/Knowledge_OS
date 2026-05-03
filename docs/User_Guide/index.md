@@ -27,7 +27,7 @@ Welcome to the Knowledge OS documentation. This folder contains detailed documen
 
 | Component | Documentation |
 |-----------|---------------|
-| Transcript Extraction | [Transcript_Extraction.py](../Transcript_Extraction.py) |
+| Transcript Extraction | [scripts/Transcript_Extraction.py](../scripts/Transcript_Extraction.py) |
 | Search System | [search/index.py](../search/index.py) |
 | Analysis Skills | [Skills/README.md](../Skills/README.md) |
 

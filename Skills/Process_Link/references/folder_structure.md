@@ -40,15 +40,15 @@
 
 ## Scripts
 
-- **Knowledge_OS/Transcript_Extraction.py** - Extracts transcripts and metadata from YouTube videos
+- **Knowledge_OS/scripts/Transcript_Extraction.py** - Extracts transcripts and metadata from YouTube videos
 
 ## Usage
 
 ```bash
-python Transcript_Extraction.py <youtube_url> <output_folder>
+python scripts/Transcript_Extraction.py <youtube_url> <output_folder>
 ```
 
 Example:
 ```bash
-python Transcript_Extraction.py "https://www.youtube.com/watch?v=xxx" "Knowledge_OS/Starter_Story/Raw_Data"
+python scripts/Transcript_Extraction.py "https://www.youtube.com/watch?v=xxx" "Knowledge_OS/Starter_Story/Raw_Data"
 ```

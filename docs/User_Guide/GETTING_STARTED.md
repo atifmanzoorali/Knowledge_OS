@@ -60,7 +60,7 @@ User: Starter_Story
 ### Using the Script Directly
 
 ```bash
-python Transcript_Extraction.py "https://www.youtube.com/watch?v=VIDEO_ID" "Starter_Story/Raw_Data"
+python scripts/Transcript_Extraction.py "https://www.youtube.com/watch?v=VIDEO_ID" "Starter_Story/Raw_Data"
 ```
 
 **Available folders:**
@@ -198,7 +198,7 @@ When you process a video, the system:
 ### Add a New Video
 
 ```bash
-python Transcript_Extraction.py "https://www.youtube.com/watch?v=..." "Folder/Raw_Data"
+python scripts/Transcript_Extraction.py "https://www.youtube.com/watch?v=..." "Folder/Raw_Data"
 ```
 
 ### Update Search Index
@@ -263,7 +263,7 @@ Now that you're set up, you can:
 
 | Command | Purpose |
 |---------|---------|
-| `python Transcript_Extraction.py [url] [folder]` | Process a video |
+| `python scripts/Transcript_Extraction.py [url] [folder]` | Process a video |
 | `python search/index.py` | Rebuild search index |
 | `python search/answer_search.py "[query]"` | Search knowledge base |
 | `git status` | Check for uncommitted changes |

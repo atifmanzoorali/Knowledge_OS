@@ -37,7 +37,7 @@ This skill takes a YouTube URL, asks the user which category folder to save it i
 
 6. **Run extraction**:
    ```
-   python Knowledge_OS/Transcript_Extraction.py <youtube_url> Knowledge_OS/<selected_folder>/Raw_Data
+   python Knowledge_OS/scripts/Transcript_Extraction.py <youtube_url> Knowledge_OS/<selected_folder>/Raw_Data
    ```
 
 7. **Skill chaining** (automatic):

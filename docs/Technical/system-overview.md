@@ -35,7 +35,7 @@ Knowledge OS automates the entire pipeline:
 ### 1. Automated Transcript Extraction
 
 ```bash
-python Transcript_Extraction.py "https://www.youtube.com/watch?v=..." "Starter_Story/Raw_Data"
+python scripts/Transcript_Extraction.py "https://www.youtube.com/watch?v=..." "Starter_Story/Raw_Data"
 ```
 
 - Fetches video metadata (title, channel, duration, views)

@@ -59,7 +59,7 @@ Requirements include:
 ### 3. Process Your First Video
 
 ```bash
-python Transcript_Extraction.py "https://www.youtube.com/watch?v=VIDEO_ID" "Starter_Story/Raw_Data"
+python scripts/Transcript_Extraction.py "https://www.youtube.com/watch?v=VIDEO_ID" "Starter_Story/Raw_Data"
 ```
 
 ### 4. Rebuild Search Index
@@ -84,39 +84,40 @@ python search/ask.py "your question"
 
 ```
 Knowledge_OS/
-├── Starter_Story/          # Startup founder interviews
-│   ├── Raw_Data/          # Original transcripts
-│   ├── Process_data/      # Analyzed profiles
+├── scripts/               # Python scripts
+│   └── Transcript_Extraction.py
+├── Starter_Story/        # Startup founder interviews
+│   ├── Raw_Data/         # Original transcripts
+│   ├── Process_data/     # Analyzed profiles
 │   └── INDEX.md
-├── AI_Leaders/            # AI industry leader interviews
+├── AI_Leaders/           # AI industry leader interviews
 │   ├── Raw_Data/
 │   ├── Process_data/
 │   └── INDEX.md
-├── Founders/              # David Senra's Founders Podcast
+├── Founders/             # David Senra's Founders Podcast
 │   ├── Raw_Data/
 │   ├── Process_data/
 │   └── INDEX.md
-├── My_First_Million/      # My First Million podcast
+├── My_First_Million/     # My First Million podcast
 │   ├── Raw_Data/
 │   ├── Process_data/
 │   └── INDEX.md
-├── AI_Engineering/        # AI development tutorials
+├── AI_Engineering/      # AI development tutorials
 │   ├── Raw_Data/
 │   ├── Process_data/
 │   └── INDEX.md
-├── Inner_Work/            # Spiritual & personal growth
+├── Inner_Work/           # Spiritual & personal growth
 │   ├── Raw_Data/
 │   ├── Process_data/
 │   └── INDEX.md
-├── search/                # Semantic search system
-│   ├── index.py           # Build search index
-│   ├── answer_search.py   # Semantic search (CLI)
-│   ├── ask.py             # RAG answer generation (DeepSeek)
-│   ├── config.py          # API configuration
-│   └── knowledge_db/      # ChromaDB vector store
-├── Skills/                # Analysis skills
-├── Transcript_Extraction.py
-├── DB_Plan.md
+├── search/               # Semantic search system
+│   ├── index.py          # Build search index
+│   ├── answer_search.py  # Semantic search (CLI)
+│   ├── ask.py            # RAG answer generation (DeepSeek)
+│   ├── config.py         # API configuration
+│   └── knowledge_db/     # ChromaDB vector store
+├── Skills/               # Analysis skills
+├── requirements.txt      # Production dependencies
 └── README.md
 ```
 

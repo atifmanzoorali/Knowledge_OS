@@ -2,7 +2,7 @@
 
 ## Critical Rules (MUST ALWAYS FOLLOW)
 
-1. **Use Local Skills Only** - All skills must be loaded from `.agents/skills/` folder using the skill tool
+1. **Use Local Skills Only** - All skills must be loaded from `Skills/` folder using the skill tool
 2. **Always Ask for Folder** - When running Process_Link, you MUST ask the user which folder to save content to before proceeding
 
 ## Search Options
