@@ -8,7 +8,7 @@ import os
 import sys
 import pytest
 from pathlib import Path
-from typing import Dict, List, Any
+from typing import Any, Dict, List
 
 # Ensure the project root is in the path
 PROJECT_ROOT = Path(__file__).parent.parent
@@ -218,8 +218,13 @@ def mock_transcript_response() -> List[Dict[str, Any]]:
 # Configuration
 # ============================================================================
 
-def pytest_configure(config):
-    """Configure pytest with custom markers."""
+def pytest_configure(config: pytest.Config) -> None:
+    """
+    Configure pytest with custom markers.
+
+    Args:
+        config: Pytest Config object.
+    """
     config.addinivalue_line(
         "markers", "unit: Unit tests for individual functions"
     )
@@ -234,8 +239,17 @@ def pytest_configure(config):
     )
 
 
-def pytest_collection_modifyitems(config, items):
-    """Modify test collection to add markers automatically."""
+def pytest_collection_modifyitems(
+    config: pytest.Config,
+    items: list[Any],
+) -> None:
+    """
+    Modify test collection to add markers automatically.
+
+    Args:
+        config: Pytest Config object.
+        items: List of collected test items.
+    """
     for item in items:
         # Add markers based on test file name
         if "integration" in item.nodeid:
