@@ -1,148 +1,102 @@
-# Knowledge OS - Structure Guide
+# Docs Folder Structure Guide
 
-This file explains how Knowledge OS is organized. Read this to understand the entire project structure.
+This file explains how the `docs/` folder is organized. Read this to understand all documentation.
 
 ---
 
-## Quick Overview
+## Overview
+
+The docs folder contains all documentation for Knowledge OS, organized into 5 categories:
 
 ```
-Knowledge_OS/
-├── docs/              # All documentation
-├── Skills/            # All skills (analysis + system)
-├── scripts/           # Python scripts
-├── search/            # RAG search system
-├── tests/             # Test suite
-├── logs/              # Error and healing logs
-└── [Content Folders]/ # Your knowledge base
+docs/
+├── Philosophy/
+├── Technical/
+├── User_Guide/
+├── Planning/
+└── Plans/
 ```
 
 ---
 
-## Detailed Structure
+## Categories
 
-### docs/ - Documentation
+### Philosophy/
+**Purpose:** Why we built it, design decisions
 
-Organized into 5 categories:
-
-| Folder | Purpose | Contents |
-|--------|---------|----------|
-| **Philosophy** | Why we built it | Design decisions, motivations |
-| **Technical** | How it works | Architecture, system details, testing |
-| **User_Guide** | How to use | Workflow, getting started, index |
-| **Planning** | Future work | Improvements, assessments |
-| **Plans/** | Implementation plans | Specific feature plans |
-
-### Skills/ - All Skills
-
-**System Skills (Meta-Operations):**
-| Skill | Purpose |
-|-------|---------|
-| add-content-folder | Create new folder + skill |
-| delete-content-folder | Delete folder + skill + cleanup |
-| Process_Link | Extract YouTube transcripts |
-
-**Analysis Skills (Content Transformation):**
-| Skill | Output Folder |
-|-------|---------------|
-| starter-story | Starter_Story/Process_data |
-| my-first-million | My_First_Million/Process_data |
-| founders | Founders/Process_data |
-| ai-leaders | AI_Leaders/Process_data |
-| inner-work | Inner_Work/Process_data |
-| ai-engineering | AI_Engineering/Process_data |
-
-### Content Folders - Your Knowledge Base
-
-Each folder follows the same structure:
-
-```
-[FOLDER_NAME]/
-├── AGENTS.md          # Folder-specific instructions
-├── INDEX.md           # List of all content
-├── Raw_Data/          # Raw transcripts
-└── Process_data/       # Analyzed profiles
-```
-
-**Available Folders:**
-| Folder | Category |
-|--------|----------|
-| Starter_Story | Startup profiles |
-| My_First_Million | Business insights |
-| Founders | Founder profiles with books |
-| AI_Leaders | AI intelligence profiles |
-| AI_Engineering | Technical frameworks |
-| Inner_Work | Wisdom/philosophy |
-
-### search/ - RAG Search System
-
-| File | Purpose |
-|------|---------|
-| ask.py | RAG query with DeepSeek |
-| answer_search.py | Semantic search (no LLM) |
-| index.py | Build search index |
-| config.py | Configuration settings |
-
-### logs/ - Error & Healing Logs
-
-| File | Purpose |
-|------|---------|
-| errors.log | Raw error details |
-| healing_log.json | Self-healing events for future sessions |
+| File | Description |
+|------|-------------|
+| Design_Philosophy.md | My design philosophy, why I built Knowledge OS |
 
 ---
 
-## How Content Flows
+### Technical/
+**Purpose:** How the system works internally
 
-### Adding New Content (You → System)
-
-1. You provide a YouTube URL
-2. Process_Link extracts transcript → saves to Raw_Data
-3. Analysis skill transforms transcript → creates profile in Process_data
-4. INDEX.md updated
-5. Search index rebuilt
-6. Changes pushed to GitHub
-
-### Querying Knowledge (You → Answer)
-
-1. You ask a question: `python search/ask.py "your question"`
-2. System searches vector database (semantic search)
-3. DeepSeek synthesizes answer from relevant documents
-4. You get AI-powered answer with sources
+| File | Description |
+|------|-------------|
+| ARCHITECTURE.md | System architecture and design |
+| system-overview.md | High-level system overview |
+| testing-guide.md | How to test the system |
+| Capacity_Analysis.md | Performance and capacity planning |
 
 ---
 
-## Self-Healing System
+### User_Guide/
+**Purpose:** How to use the system
 
-The system can automatically recover from errors:
-
-| Error Type | Auto-Fix |
-|------------|----------|
-| API Rate Limit | Wait 5s → 10s → 20s, retry |
-| API Timeout | Reduce max_tokens, retry |
-| Transcript Language | Try: en-US → en-GB → en → auto → es → pt |
-| Index Empty | Auto-rebuild |
-
-**Healing Log:** All healing events are saved to `logs/healing_log.json` so future sessions can continue where this one left off.
+| File | Description |
+|------|-------------|
+| workflow.md | Complete workflow documentation |
+| GETTING_STARTED.md | Quick start guide for new users |
+| index.md | Documentation index |
 
 ---
 
-## Key Files
+### Planning/
+**Purpose:** Future work and assessments
 
-| File | Purpose |
-|------|---------|
-| AGENTS.md | Agent instructions (read this first in new session) |
-| Skills/AGENTS.md | All available skills |
-| docs/Structure_Guide.md | This file |
+| File | Description |
+|------|-------------|
+| Improvement.md | Planned improvements |
+| Rating_Assessment.md | v1 rating assessment |
+| Rating_Assessment_v2.md | v2 rating assessment (updated with self-healing + system skills) |
 
 ---
 
-## Important Notes
+### Plans/
+**Purpose:** Specific implementation plans
 
-1. **Human-in-the-Loop:** You decide what goes in (URL + folder). System handles everything else.
-2. **Depth over Breadth:** YouTube-only for v1. We perfect one thing before adding more.
-3. **Self-Maintaining:** The system can add/delete folders, update references, rebuild index automatically.
-4. **Git-Based:** All content is version-controlled and lives in GitHub.
+| File | Description |
+|------|-------------|
+| Self_Heal_Plan.md | Self-healing implementation plan |
+| Code_Qqality_Plan.md | Code quality plan |
+| DB_Plan.md | Database plan |
+| Docs_Organization_Plan.md | This docs organization plan |
+
+---
+
+## Quick Reference
+
+| What you need | Look here |
+|---------------|-----------|
+| Why I built this | Philosophy/ |
+| How it works | Technical/ |
+| How to use it | User_Guide/ |
+| What's next | Planning/ |
+| Implementation details | Plans/ |
+
+---
+
+## Adding New Documentation
+
+When adding new docs, put them in the correct category:
+
+1. **Philosophy** - Design decisions, motivations
+2. **Technical** - Architecture, system details
+3. **User_Guide** - Usage instructions
+4. **Planning** - Future work, assessments
+5. **Plans/** - Implementation plans
 
 ---
 
