@@ -15,6 +15,7 @@ Skills are autonomous agents that process specific content types. When a transcr
 | Skill | Folder | Trigger | Description |
 |-------|--------|---------|-------------|
 | **add-content-folder** | - | Manual | Create new content folders |
+| **delete-content-folder** | - | Manual | Delete content folders |
 | **Process_Link** | Process_Link | Manual | Extracts YouTube transcripts |
 | **starter-story** | Starter_Story | Auto | Startup founder profiles |
 | **ai-leaders** | AI_Leaders | Auto | AI industry leader profiles |
@@ -98,6 +99,32 @@ flowchart TD
 - "add a new folder"
 - "create new content category"
 - "add new skill folder"
+
+---
+
+## delete-content-folder Skill
+
+**Purpose:** Delete content folders along with their related skills and all references
+
+**Input:** Folder name from user
+
+**Process:**
+1. Get folder name
+2. List contents (show what's being deleted)
+3. **Require user confirmation** (CRITICAL)
+4. Delete folder in Knowledge_OS/
+5. Delete skill in Skills/
+6. Update Process_Link (remove from folders & skill chaining)
+7. Update AGENTS.md files
+8. Rebuild search index
+9. Push to GitHub
+
+**Trigger phrases:**
+- "delete a folder"
+- "remove content folder"
+- "delete skill"
+
+**Protected folders:** Process_Link, add-content-folder, delete-content-folder
 
 ---
 

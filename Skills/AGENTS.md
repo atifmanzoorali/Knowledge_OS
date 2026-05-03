@@ -25,6 +25,32 @@ A skill to create new folder structures with corresponding analysis skills for o
 
 ---
 
+## delete-content-folder
+
+A skill to delete content folders along with their related skills and all references.
+
+**Trigger phrases:** "delete a folder", "remove content folder", "delete skill", "delete [Folder_Name] folder"
+
+**Workflow:** Gets folder name, shows contents, requires user confirmation, deletes folder + skill + updates references + rebuilds search index
+
+**Folder structure:**
+- delete-content-folder/
+  - SKILL.md
+
+### Features
+
+- Lists folder contents before deletion
+- **Requires user confirmation** (CRITICAL)
+- Deletes Content folder in Knowledge_OS/
+- Deletes related skill in Skills/
+- Updates Process_Link (removes from folders & skill chaining)
+- Updates AGENTS.md files
+- Rebuilds search index
+- Git push workflow
+- **Protected folders:** Process_Link, add-content-folder, delete-content-folder (cannot be deleted)
+
+---
+
 ## Process_Link
 
 A skill to extract YouTube transcripts and save them to the appropriate category folder in Knowledge_OS.
