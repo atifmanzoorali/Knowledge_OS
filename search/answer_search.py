@@ -2,18 +2,20 @@ import os
 import sys
 import chromadb
 from sentence_transformers import SentenceTransformer
+from pathlib import Path
 
 if sys.platform == "win32":
     import io
     sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
 
-CHROMA_DB_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "knowledge_db")
+SEARCH_DIR = Path(__file__).parent
+CHROMA_DB_PATH = SEARCH_DIR / "knowledge_db"
 MODEL_NAME = "all-MiniLM-L6-v2"
-KNOWLEDGE_OS_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+KNOWLEDGE_OS_ROOT = SEARCH_DIR.parent
 
 
 def search_knowledge(query, n_results=3):
-    chroma_client = chromadb.PersistentClient(path=CHROMA_DB_PATH)
+    chroma_client = chromadb.PersistentClient(path=str(CHROMA_DB_PATH))
     collection = chroma_client.get_or_create_collection(name="knowledge")
 
     if collection.count() == 0:
@@ -32,7 +34,7 @@ def search_knowledge(query, n_results=3):
 
 def read_file_content(file_path):
     try:
-        full_path = os.path.join(KNOWLEDGE_OS_ROOT, file_path)
+        full_path = KNOWLEDGE_OS_ROOT / file_path
         with open(full_path, "r", encoding="utf-8") as f:
             content = f.read()
             if content.startswith("---"):
@@ -49,7 +51,16 @@ def main():
     print("Knowledge OS - Search")
     print("=" * 60)
 
+    if len(sys.argv) >= 2 and sys.argv[1] == "--ask":
+        import ask
+        sys.argv = [sys.argv[0]] + sys.argv[2:]
+        ask.main()
+        return
+
     if len(sys.argv) < 2:
+        print("\nUsage:")
+        print("  python search/answer_search.py \"query\"           # Search profiles")
+        print("  python search/answer_search.py --ask \"question\" # RAG answer")
         query = input("\nEnter your search: ").strip()
         if not query:
             print("No search query entered.")
@@ -78,6 +89,10 @@ def main():
 
         for i, (doc, meta, dist) in enumerate(zip(documents, metadatas, distances), 1):
             score = 1 - dist
+            if score < 0:
+                score = 0
+            elif score > 1:
+                score = 1
             source = meta.get("source", "Unknown")
             category = meta.get("category", "Unknown")
             file_type = meta.get("file_type", "unknown")

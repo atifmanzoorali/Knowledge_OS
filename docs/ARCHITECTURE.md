@@ -88,6 +88,7 @@ flowchart TB
 | YouTube URL Input | Manual | User provides video URL |
 | Transcript Extraction | `yt-dlp` | Fetch video metadata |
 | Transcript Retrieval | `youtube-transcript-api` | Get transcript text |
+| RAG Answer Generation | `openai` + DeepSeek API | Synthesize answers from search results |
 
 **Data Flow:**
 ```
@@ -252,13 +253,33 @@ sequenceDiagram
     participant Q as Query CLI
     participant M as Sentence-Transformers
     participant C as ChromaDB
+    participant L as DeepSeek API
     participant F as File System
 
     U->>Q: Natural language query
     Q->>M: Encode query
     M->>C: Search vectors
     C-->>Q: Top K results
-    Q-->>U: Display results
+    Q->>L: Send context + question (RAG mode)
+    L-->>Q: Synthesized answer
+    Q-->>U: Display answer + sources
+```
+
+### RAG Answer Generation Flow
+
+```mermaid
+sequenceDiagram
+    participant U as User
+    participant A as ask.py
+    participant C as ChromaDB
+    participant D as DeepSeek API
+
+    U->>A: Question
+    A->>C: Semantic search
+    C-->>A: Top 5 results
+    A->>D: Context + Question
+    D-->>A: Generated answer
+    A-->>U: Answer + Sources
 ```
 
 ---

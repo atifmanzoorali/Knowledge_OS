@@ -30,6 +30,7 @@ Knowledge OS is an autonomous agent system that ingests content from YouTube, ex
 - **Skill-Based Analysis** - 6 specialized skills that process different content types
 - **Structured Profiles** - Consistent, searchable markdown profiles
 - **Semantic Search** - Find relevant knowledge using natural language
+- **RAG Answer Generation** - Get AI-synthesized answers with DeepSeek
 - **GitHub Integration** - Automatic version control and backup
 
 ---
@@ -70,7 +71,11 @@ python search/index.py
 ### 5. Search Your Knowledge Base
 
 ```bash
+# Option 1: Semantic Search (returns profile snippets)
 python search/answer_search.py "your search query"
+
+# Option 2: RAG Answers (AI-synthesized answers with DeepSeek)
+python search/ask.py "your question"
 ```
 
 ---
@@ -105,7 +110,9 @@ Knowledge_OS/
 │   └── INDEX.md
 ├── search/                # Semantic search system
 │   ├── index.py           # Build search index
-│   ├── answer_search.py   # Query the knowledge base
+│   ├── answer_search.py   # Semantic search (CLI)
+│   ├── ask.py             # RAG answer generation (DeepSeek)
+│   ├── config.py          # API configuration
 │   └── knowledge_db/      # ChromaDB vector store
 ├── Skills/                # Analysis skills
 ├── Transcript_Extraction.py
@@ -173,6 +180,7 @@ Knowledge_OS/
 | Transcript Extraction | yt-dlp, youtube-transcript-api |
 | Vector Search | ChromaDB |
 | Embeddings | sentence-transformers (all-MiniLM-L6-v2) |
+| LLM for RAG | DeepSeek API |
 | Storage | Markdown + Git |
 | Search UI | CLI |
 
@@ -192,15 +200,34 @@ System: [Extracts transcript, runs starter-story skill, creates profile, pushes 
 ### Search the Knowledge Base
 
 ```bash
+# Semantic Search - returns profile snippets with relevance scores
 $ python search/answer_search.py "how did marc lou validate his ideas"
 
 Found 3 relevant section(s):
-
---- RESULT 1 ---
 Source: Starter_Story/Process_data/Marc_Lou-35_Startups-2026.md [profile]
 Category: Starter_Story | Relevance: 92%
-"The only way to validate an idea is to ship it with a buy button..."
 ```
+
+### RAG Answer Generation
+
+```bash
+# RAG with DeepSeek - returns AI-synthesized answers with citations
+$ python search/ask.py "How do founders validate their startup ideas?"
+
+Question: How do founders validate their startup ideas?
+
+📝 Answer:
+Based on the provided context, Marc Lou validates through a volume-based approach...
+He launches dozens of projects and lets the market decide.
+
+📚 Sources:
+1. Starter_Story/Process_data/Marc_Lou-35_Startups-2026.md [profile]
+```
+
+> **Note:** RAG requires a DeepSeek API key. Add to `.env` file:
+> ```
+> DEEPSEEK_API_KEY=sk-your-key-here
+> ```
 
 ---
 

@@ -5,6 +5,13 @@
 1. **Use Local Skills Only** - All skills must be loaded from `.agents/skills/` folder using the skill tool
 2. **Always Ask for Folder** - When running Process_Link, you MUST ask the user which folder to save content to before proceeding
 
+## Search Options
+
+| Command | Description |
+|---------|-------------|
+| `python search/ask.py "question"` | RAG with DeepSeek - AI synthesized answers |
+| `python search/answer_search.py "query"` | Semantic search - returns profile snippets |
+
 ## Available Folders
 
 1. Starter_Story
