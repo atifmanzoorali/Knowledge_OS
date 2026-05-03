@@ -141,6 +141,13 @@ thumbnail: https://...
 | AI_Engineering | ai-engineering | AI development tutorials |
 | Inner_Work | inner-work | Spiritual & personal growth |
 
+**Management Skills (System):**
+
+| Skill | Trigger | Purpose |
+|--------|---------|----------|
+| add-content-folder | Manual | Create new content folders |
+| delete-content-folder | Manual | Delete content folders |
+
 ---
 
 ### 4. Processing Layer

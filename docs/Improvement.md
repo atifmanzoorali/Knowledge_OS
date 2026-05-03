@@ -4,19 +4,20 @@
 
 ### What's Working Well ✅
 - **Transcription pipeline** - Clean YouTube → text workflow
-- **Skill chaining** - 6 categories auto-trigger their analysis skills
+- **Skill chaining** - 8 skills (6 analysis + 2 management)
 - **Structured templates** - Each category has defined output formats
 - **Semantic search** - ChromaDB + sentence-transformers implemented
 - **Git workflow** - Automated commit/push after processing
+- **Dynamic folder management** - add-content-folder & delete-content-folder skills
 
 ### Current Gaps ⚠️
 
 | Area | Current State | Hiring-Adequate |
 |------|---------------|----------------|
-| **Skill System** | 6 hardcoded skills | Needs dynamic registry |
+| **Skill System** | 8 skills (dynamic) | ✅ Improved |
 | **Search** | CLI only | Needs API/web interface |
 | **Content Sources** | YouTube only | Needs multi-source |
-| **Testing** | None | Needs test suite |
+| **Testing** | Basic tests | Needs more coverage |
 | **Error Handling** | Basic try/catch | Needs retry circuits |
 | **Outputs** | Markdown only | Needs multi-format |
 | **Graph/Network** | None | Needs idea linking |

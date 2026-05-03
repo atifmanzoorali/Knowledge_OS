@@ -44,10 +44,12 @@ python Transcript_Extraction.py "https://www.youtube.com/watch?v=..." "Starter_S
 
 ### 2. Skill-Based Analysis
 
-6 specialized skills process different content types:
+8 specialized skills process different content types:
 
 | Skill | Input | Output |
 |-------|-------|--------|
+| add-content-folder | Folder name | Creates new folder structure |
+| delete-content-folder | Folder name | Deletes folder + updates references |
 | starter-story | Founder interviews | Startup profiles |
 | ai-leaders | AI leader interviews | Intelligence profiles |
 | founders | Business analysis | Founder profiles with books |
