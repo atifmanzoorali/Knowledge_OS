@@ -9,8 +9,8 @@ Welcome to the Knowledge OS documentation. This folder contains detailed documen
 | Guide | Description |
 |-------|-------------|
 | [README.md](../README.md) | Project overview and quick start |
-| [GETTING_STARTED.md](../GETTING_STARTED.md) | Step-by-step setup guide |
-| [ARCHITECTURE.md](../ARCHITECTURE.md) | System architecture and diagrams |
+| [GETTING_STARTED.md](GETTING_STARTED.md) | Step-by-step setup guide |
+| [ARCHITECTURE.md](../Technical/ARCHITECTURE.md) | System architecture and diagrams |
 
 ---
 
@@ -18,8 +18,19 @@ Welcome to the Knowledge OS documentation. This folder contains detailed documen
 
 | Document | Description |
 |----------|-------------|
-| [System Overview](system-overview.md) | What is Knowledge OS and why use it |
+| [System Overview](../Technical/system-overview.md) | What is Knowledge OS and why use it |
 | [Workflow](workflow.md) | Detailed workflow diagrams |
+| [Testing & Healing](Testing_Healing.md) | Automated testing and self-healing features |
+
+---
+
+## How to Use
+
+| Guide | Description |
+|-------|-------------|
+| [Commands Reference](Commands_Reference.md) | All CLI commands with examples |
+| [Folder Structure](Folder_Structure_Guide.md) | Content folders and when to use each |
+| [Search Guide](Search_Guide.md) | How to search effectively |
 
 ---
 
@@ -57,4 +68,4 @@ See [README.md](../README.md#contributing) for contribution guidelines.
 
 ---
 
-*Documentation Version: 1.0 | Last Updated: 2026-05-02*
+*Documentation Version: 1.0 | Last Updated: 2026-05-04*
