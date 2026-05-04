@@ -10,3 +10,4 @@
 | Henry Shukman | Zen & Mind Silence | Philosophy | 2026-05-03 |
 | Rabbi Manis Friedman | Marriage, Love & Intimacy | Kabbalah | 2026-05-02 |
 | Jewish Learning Institute | Problem of Evil | Spirituality | 2026-05-04 |
+| Swami Sukhabodhananda | Mental Health & Gita Wisdom | Philosophy | 2026-05-04 |
